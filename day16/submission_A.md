@@ -22,6 +22,7 @@ Recurring workflow: Đọc đề → Nháp thử → Bị tắc/Tính sai → D�
 
 Pain moment: 1. (Học sinh): Khủng hoảng lúc 11h đêm khi bị tắc, sợ chép mạng ngày mai lên bảng không biết giải thích.
 2. (Phụ huynh): Áp lực học phí gia sư đắt đỏ; bất lực khi con lạm dụng AI để chép giải dẫn đến điểm thi thật thấp.
+3. Đôi khi con ngoan, có ý thức học, nhưng hỏi bố mẹ thì bố mẹ đã quên kiến thức hoặc không có kỹ năng giảng dạy tốt -> đưa đáp án chứ không thể giải thích cho con tại sao, hoặc bố mẹ cũng không giải quyết được"
 
 Why now: Phụ huynh/Giáo viên đang "báo động đỏ" về thế hệ học sinh gian lận bằng GenAI. Nền kinh tế thắt chặt khiến phụ huynh tìm giải pháp thay thế gia sư 1-1 đắt đỏ.
 
@@ -51,7 +52,7 @@ Statement (JTBD): When [con tự học ở nhà], I want [một công cụ kèm 
 
 Current workaround: Thuê sinh viên kèm 1-1 (2-3 triệu/tháng); tự dạy con (xung đột gia đình); cấm dùng điện thoại (cực đoan).
 
-Pain signal: Tức giận vì điểm bài tập về nhà cao (do chép mạng) nhưng điểm thi thực tế lẹt đẹt.
+Pain signal: Cảm giác áy náy/bất lực khi thấy con loay hoay hỏi bài nhưng mình không đủ trình độ giải đáp. Tức giận vì điểm bài tập về nhà cao (do chép mạng) nhưng điểm thi thực tế lẹt đẹt.
 
 Evidence / proxy evidence: Làn sóng bài xích AI gian lận trên các hội nhóm Phụ huynh/Giáo viên.
 
