@@ -1,6 +1,6 @@
 # Day 17 Submission
 
-Student: [Tên của bạn]  
+Student: Nguyễn Quang Tùng - 2A202600197
 Date: 24/04/2026
 
 Product idea: SmartHint AI - "Trò chơi giải cứu" lúc 11h đêm giúp học sinh tự gỡ rối bài Toán bằng gợi mở Socratic, đồng thời là "Trợ lý giám sát" gửi báo cáo nỗ lực thực chất cho Phụ huynh (Mô hình Direct-to-Parent).
