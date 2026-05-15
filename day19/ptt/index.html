@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MathHint - Gia sư toán THPT thông minh, hỗ trợ bài tập bằng gợi ý">
+  <title>MathHint — Gia Sư Toán THPT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">🧠</div>
+        <span class="logo-text">MathHint</span>
+      </div>
+      <button class="new-chat-btn" id="newChatBtn">
+        <span>＋</span> Cuộc hội thoại mới
+      </button>
+    </div>
+
+    <div class="session-list" id="sessionList">
+      <div class="session-group-label">Hôm nay</div>
+      <div class="session-item active" data-id="1" data-session-id="session-1">
+        <span class="icon">📈</span>
+        <div class="info">
+          <div class="title">Cực trị hàm số bậc 3</div>
+          <div class="time">10 phút trước</div>
+        </div>
+      </div>
+      <div class="session-item" data-id="2" data-session-id="session-2">
+        <span class="icon">📊</span>
+        <div class="info">
+          <div class="title">Đạo hàm hàm hợp</div>
+          <div class="time">2 giờ trước</div>
+        </div>
+      </div>
+
+      <div class="session-group-label">Hôm qua</div>
+      <div class="session-item" data-id="3" data-session-id="session-3">
+        <span class="icon">📚</span>
+        <div class="info">
+          <div class="title">Khảo sát hàm số bậc 3</div>
+          <div class="time">Hôm qua</div>
+        </div>
+      </div>
+      <div class="session-item" data-id="4" data-session-id="session-4">
+        <span class="icon">🔺</span>
+        <div class="info">
+          <div class="title">Lượng giác - sin, cos</div>
+          <div class="time">Hôm qua</div>
+        </div>
+      </div>
+
+      <div class="session-group-label">Tuần trước</div>
+      <div class="session-item" data-id="5" data-session-id="session-5">
+        <span class="icon">📏</span>
+        <div class="info">
+          <div class="title">Tích phân cơ bản</div>
+          <div class="time">3 ngày trước</div>
+        </div>
+      </div>
+      <div class="session-item" data-id="6" data-session-id="session-6">
+        <span class="icon">🔢</span>
+        <div class="info">
+          <div class="title">Số phức</div>
+          <div class="time">5 ngày trước</div>
+        </div>
+      </div>
+      <div class="session-item" data-id="7" data-session-id="session-7">
+        <span class="icon">📷</span>
+        <div class="info">
+          <div class="title">Phương trình bậc 2 (OCR)</div>
+          <div class="time">6 ngày trước</div>
+        </div>
+      </div>
+      <div class="session-item" data-id="8" data-session-id="session-8">
+        <span class="icon">🏔️</span>
+        <div class="info">
+          <div class="title">Tích phân từng phần (Adaptive)</div>
+          <div class="time">1 tuần trước</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-profile" id="userProfileBtn">
+        <div class="avatar">Q</div>
+        <div>
+          <div class="user-name">Quang</div>
+          <div class="user-role">Học sinh THPT</div>
+        </div>
+        <span class="profile-arrow" id="profileArrow">▴</span>
+      </div>
+      <!-- Profile Dropdown -->
+      <div class="profile-dropdown" id="profileDropdown">
+        <div class="dropdown-header">
+          <div class="avatar avatar-lg">Q</div>
+          <div>
+            <div class="dropdown-name">Nguyễn Văn Quang</div>
+            <div class="dropdown-email">quang@email.com</div>
+          </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <a href="profile.html" class="dropdown-item">
+          <span class="dropdown-icon">👤</span> Hồ sơ cá nhân
+        </a>
+        <a href="#" class="dropdown-item">
+          <span class="dropdown-icon">⚙️</span> Cài đặt
+        </a>
+        <a href="#" class="dropdown-item">
+          <span class="dropdown-icon">📊</span> Thống kê học tập
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="login.html" class="dropdown-item logout-item">
+          <span class="dropdown-icon">🚪</span> Đăng xuất
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
+
+    <!-- Chat Header -->
+    <header class="chat-header">
+      <div class="chat-header-left">
+        <button class="header-btn" id="toggleSidebar" title="Menu">☰</button>
+        <div class="subject-badge">
+          <span>📈</span> Giải tích 12
+        </div>
+        <div class="chat-title">Cực trị hàm số bậc 3</div>
+      </div>
+      <div class="chat-header-right">
+        <div class="hint-progress" id="hintProgress">
+          <span class="hint-label">Gợi ý</span>
+          <div class="hint-dots">
+            <span class="hint-dot"></span>
+            <span class="hint-dot"></span>
+            <span class="hint-dot"></span>
+          </div>
+          <span class="hint-label">0/?</span>
+        </div>
+        <button class="header-btn" id="themeToggle" title="Đổi theme">🌙</button>
+      </div>
+    </header>
+
+    <!-- Chat Messages -->
+    <div class="chat-messages" id="chatMessages">
+
+      <!-- Bot welcome -->
+      <div class="message bot">
+        <div class="message-avatar">🧠</div>
+        <div class="message-content">
+          Chào Quang! 👋 Hôm nay em muốn ôn tập phần nào?
+          <div class="message-meta">19:45</div>
+        </div>
+      </div>
+
+      <!-- User message -->
+      <div class="message user">
+        <div class="message-avatar">Q</div>
+        <div class="message-content">
+          Anh hướng dẫn em bài này với: Tìm các điểm cực trị của hàm số <span class="math">y = x³ - 3x² + 2</span>
+          <div class="message-meta">19:46</div>
+        </div>
+      </div>
+
+      <!-- Bot - ASSESS MODE (mới) -->
+      <div class="message bot">
+        <div class="message-avatar">🧠</div>
+        <div class="message-content">
+          <div class="assess-badge">🔍 Chẩn đoán</div>
+          Đây là dạng bài <strong>Tìm cực trị hàm số bậc 3</strong>.
+          <br><br>
+          📋 <strong>Kiến thức cần có:</strong> Đạo hàm cơ bản
+          <br><br>
+          <div class="memory-recall">
+            🧠 <em>Mình thấy hôm qua em vừa làm rất tốt bài tính đạo hàm cơ bản rồi (mastery 92%). Bài này mình sẽ ứng
+              dụng đạo hàm nhé!</em>
+          </div>
+          <div class="assess-actions">
+            <button class="assess-btn primary"
+              onclick="this.closest('.assess-actions').innerHTML='✅ Bắt đầu gợi ý...'">Sẵn sàng, gợi ý đi anh!</button>
+            <button class="assess-btn secondary"
+              onclick="this.closest('.assess-actions').innerHTML='📖 Chuyển sang giải thích Đạo hàm...'">Ôn lại Đạo hàm
+              trước</button>
+          </div>
+          <div class="message-meta">19:46 · <span class="ref-tag" title="Nguồn: Khái niệm Cực trị">REF:
+              CONCEPT_002</span></div>
+        </div>
+      </div>
+
+      <!-- Bot - Hint 1 -->
+      <div class="message bot">
+        <div class="message-avatar">🧠</div>
+        <div class="message-content">
+          <div class="hint-badge level-1">💡 Gợi ý 1/3</div>
+          Để tìm cực trị của một hàm số đa thức, bước đầu tiên và quan trọng nhất luôn là gì em nhỉ?
+          <br><br>
+          <em>Gợi ý: Mình cần tìm sự biến thiên của hàm số, đại lượng nào giúp mình biết hàm số đang đồng biến hay
+            nghịch biến?</em>
+          <div class="message-meta">19:46 · <span class="ref-tag">REF: METHOD_001</span></div>
+          <div class="msg-actions">
+            <button class="msg-action-btn" title="Báo lỗi">⚠️</button>
+            <button class="msg-action-btn" title="Hữu ích">👍</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- User reply -->
+      <div class="message user">
+        <div class="message-avatar">Q</div>
+        <div class="message-content">
+          Là tính y' đúng không ạ? y' = 3x² - 6x
+          <div class="message-meta">19:48</div>
+        </div>
+      </div>
+
+      <!-- Bot - Hint 2 -->
+      <div class="message bot">
+        <div class="message-avatar">🧠</div>
+        <div class="message-content">
+          <div class="hint-badge level-2">💡 Gợi ý 2/3</div>
+          Chính xác! Đạo hàm <span class="math">y' = 3x² - 6x</span> hoàn toàn đúng. ✅
+          <div class="sympy-verified">
+            ✅ <em>Đã xác minh bằng SymPy</em>
+          </div>
+          <br>
+          Bây giờ, cực trị sẽ xuất hiện tại những điểm mà đạo hàm bằng 0.
+          <br><br>
+          📝 <strong>Bước tiếp theo:</strong>
+          <br>Em hãy giải phương trình <span class="math">y' = 0</span> để tìm các điểm tới hạn nhé.
+          <br><br>
+          🤔 <span class="math">3x² - 6x = 0</span> có những nghiệm nào?
+          <div class="message-meta">19:48 · <span class="ref-tag">REF: METHOD_001</span></div>
+          <div class="msg-actions">
+            <button class="msg-action-btn" title="Báo lỗi">⚠️</button>
+            <button class="msg-action-btn" title="Hữu ích">👍</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- User reply -->
+      <div class="message user">
+        <div class="message-avatar">Q</div>
+        <div class="message-content">
+          Em bấm máy tính ra x = 0 với x = 2 ạ. Rồi làm sao biết cái nào là cực đại, cái nào là cực tiểu anh?
+          <div class="message-meta">19:50</div>
+        </div>
+      </div>
+
+      <!-- Bot - Hint 3 with method choice -->
+      <div class="message bot">
+        <div class="message-avatar">🧠</div>
+        <div class="message-content">
+          <div class="hint-badge level-3">💡 Gợi ý 3/3</div>
+          Rất tốt! Em đã tìm được hoành độ các điểm cực trị.
+          <br><br>
+          Để phân biệt cực đại và cực tiểu, mình có 2 cách:
+          <br><br>
+          <div class="method-choice">
+            <div class="method-option" onclick="this.classList.toggle('selected')">
+              <div class="method-num">1</div>
+              <div>
+                <strong>Bảng xét dấu y'</strong>
+                <div class="method-desc">Quy tắc "Trong trái, ngoài cùng"</div>
+              </div>
+            </div>
+            <div class="method-option" onclick="this.classList.toggle('selected')">
+              <div class="method-num">2</div>
+              <div>
+                <strong>Đạo hàm bậc hai y''</strong>
+                <div class="method-desc">Nhanh gọn, thay số trực tiếp</div>
+                <span class="method-new-tag">Thử cách mới?</span>
+              </div>
+            </div>
+          </div>
+          <br>
+          🤔 Em muốn thử cách nào?
+          <div class="message-meta">19:51 · <span class="ref-tag">REF: METHOD_001</span> <span class="ref-tag">REF:
+              METHOD_002</span></div>
+          <div class="msg-actions">
+            <button class="msg-action-btn" title="Báo lỗi">⚠️</button>
+            <button class="msg-action-btn" title="Hữu ích">👍</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completion celebration (demo) -->
+      <div class="message bot">
+        <div class="message-avatar">🧠</div>
+        <div class="message-content celebration-msg">
+          <div class="celebration-header">🎉 Em tự giải được rồi!</div>
+          <div class="celebration-stats">
+            <div class="celeb-stat">
+              <span class="celeb-icon">💡</span>
+              <span>Chỉ dùng <strong>2 gợi ý</strong></span>
+            </div>
+            <div class="celeb-stat">
+              <span class="celeb-icon">⏱️</span>
+              <span>Hoàn thành trong <strong>5 phút</strong></span>
+            </div>
+            <div class="celeb-stat">
+              <span class="celeb-icon">🔥</span>
+              <span>Streak: <strong>15 ngày</strong></span>
+            </div>
+          </div>
+          <div class="badge-earned">
+            <span class="badge-icon">🏆</span>
+            <span>Badge mới: <strong>"Tự lực cánh sinh"</strong> — Tự giải 10 bài chỉ với ≤2 hints!</span>
+          </div>
+          <div class="mastery-update">
+            📈 Mastery <strong>Cực trị</strong>: 70% → <strong>75%</strong> (+5%)
+          </div>
+          <div class="message-meta">19:55</div>
+        </div>
+      </div>
+
+      <!-- Typing indicator -->
+      <div class="typing-indicator" id="typingIndicator" style="display: none;">
+        <div class="message-avatar"
+          style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;background:linear-gradient(135deg,#7c3aed,#2563eb);box-shadow:0 2px 10px rgba(124,58,237,0.3);">
+          🧠</div>
+        <div class="typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input -->
+    <div class="chat-input-area">
+      <div class="input-wrapper">
+        <textarea id="messageInput" rows="1" placeholder="Nhập bài toán hoặc câu hỏi của em..."
+          autocomplete="off"></textarea>
+        <div class="input-actions">
+          <button class="input-btn" id="mathInputBtn" title="Nhập công thức toán">∑</button>
+          <button class="input-btn" id="cameraBtn" title="Chụp ảnh đề bài">📷</button>
+          <button class="input-btn" id="imageUploadBtn" title="Tải ảnh lên">🖼️</button>
+          <input type="file" id="imageFileInput" accept="image/*" style="display: none;">
+          <button class="input-btn send-btn" id="sendBtn" title="Gửi">➤</button>
+        </div>
+      </div>
+      <div class="input-hint">
+        MathHint chỉ đưa gợi ý, không đưa đáp án — giúp em tự tư duy và nhớ lâu hơn 🎯
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== MODALS ===== -->
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+
+  <!-- Settings Modal -->
+  <div class="modal" id="settingsModal">
+    <div class="modal-header">
+      <h2>Cài đặt</h2>
+      <button class="close-modal-btn" data-close="settingsModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="setting-item">
+        <div class="setting-info">
+          <h4>Giao diện tối (Dark Mode)</h4>
+          <p>Chuyển giao diện sang tông màu tối để bảo vệ mắt</p>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <div class="setting-info">
+          <h4>Âm thanh thông báo</h4>
+          <p>Phát âm thanh khi có tin nhắn mới từ gia sư</p>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <div class="setting-info">
+          <h4>Push Notification</h4>
+          <p>Nhận thông báo Daily Challenge lúc 19:00</p>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <div class="setting-info">
+          <h4>Cấp độ gợi ý mặc định</h4>
+          <p>Mức độ chi tiết của các gợi ý</p>
+        </div>
+        <select class="setting-select">
+          <option>Tự động (Theo AI)</option>
+          <option>Luôn bắt đầu từ Hint 1</option>
+          <option>Cho phép nhảy Hint</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Modal -->
+  <div class="modal" id="statsModal">
+    <div class="modal-header">
+      <h2>📊 Thống kê học tập</h2>
+      <button class="close-modal-btn" data-close="statsModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="stats-overview">
+        <div class="stat-box">
+          <div class="stat-value">127</div>
+          <div class="stat-label">Tổng bài đã giải</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">87%</div>
+          <div class="stat-label">Tỷ lệ tự giải</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">14 🔥</div>
+          <div class="stat-label">Streak hiện tại</div>
+        </div>
+      </div>
+      <div class="prediction-card">
+        <div class="prediction-score">8.5+</div>
+        <div class="prediction-text">Dự báo điểm Toán dựa trên tỷ lệ tự giải, số chủ đề master và tính kiên trì</div>
+      </div>
+      <p class="stats-subtitle"><strong>Mastery chuyên đề</strong></p>
+      <div class="skills-list">
+        <div class="skill-item">
+          <span>Đạo hàm</span>
+          <div class="skill-bar"><div class="fill green" style="width:92%"></div></div>
+          <span class="skill-pct">92%</span>
+        </div>
+        <div class="skill-item">
+          <span>Cực trị hàm số</span>
+          <div class="skill-bar"><div class="fill green" style="width:75%"></div></div>
+          <span class="skill-pct">75%</span>
+        </div>
+        <div class="skill-item">
+          <span>Lượng giác</span>
+          <div class="skill-bar"><div class="fill amber" style="width:30%"></div></div>
+          <span class="skill-pct">30%</span>
+        </div>
+        <div class="skill-item">
+          <span>Tích phân</span>
+          <div class="skill-bar"><div class="fill amber" style="width:45%"></div></div>
+          <span class="skill-pct">45%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Math Input Modal -->
+  <div class="modal" id="mathInputModal">
+    <div class="modal-header">
+      <h2>✏️ Nhập công thức toán</h2>
+      <button class="close-modal-btn" data-close="mathInputModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="math-editor-container">
+        <!-- Visual Math Display -->
+        <div class="math-display-area" id="mathDisplayArea">
+          <div class="math-display-content" id="mathDisplayContent">
+            <span class="placeholder-text">Click nút hoặc gõ bên dưới...</span>
+          </div>
+        </div>
+
+        <!-- Text input for typing -->
+        <div class="text-input-inline">
+          <input type="text" id="mathTextInput" placeholder="Gõ số, biến, hằng số... (ví dụ: x, y, 123, π)" />
+          <button class="btn-add-text" id="addTextBtn">Thêm</button>
+        </div>
+
+        <!-- Compact Toolbar -->
+        <div class="math-toolbar-compact">
+          <!-- Row 1: Structures (8 buttons) -->
+          <div class="toolbar-row">
+            <button class="tool-btn-compact" data-template="frac" title="Phân số">
+              <div class="btn-visual-compact">
+                <span style="font-size: 11px;">a</span>
+                <div style="border-top: 1.5px solid; width: 100%; margin: 1px 0;"></div>
+                <span style="font-size: 11px;">b</span>
+              </div>
+            </button>
+            <button class="tool-btn-compact" data-template="sqrt" title="Căn bậc 2">
+              <span style="font-size: 18px;">√</span><span style="font-size: 11px;">x</span>
+            </button>
+            <button class="tool-btn-compact" data-template="nroot" title="Căn bậc n">
+              <span style="font-size: 9px; vertical-align: super;">n</span><span style="font-size: 18px;">√</span><span style="font-size: 11px;">x</span>
+            </button>
+            <button class="tool-btn-compact" data-template="power" title="Lũy thừa">
+              <span style="font-size: 13px;">x</span><span style="font-size: 9px; vertical-align: super;">n</span>
+            </button>
+            <button class="tool-btn-compact" data-template="subscript" title="Chỉ số dưới">
+              <span style="font-size: 13px;">x</span><span style="font-size: 9px; vertical-align: sub;">n</span>
+            </button>
+            <button class="tool-btn-compact" data-template="integral" title="Tích phân">
+              <span style="font-size: 20px;">∫</span>
+            </button>
+            <button class="tool-btn-compact" data-template="sum" title="Tổng">
+              <span style="font-size: 22px;">∑</span>
+            </button>
+            <button class="tool-btn-compact" data-template="limit" title="Giới hạn">
+              <span style="font-size: 11px;">lim</span>
+            </button>
+          </div>
+
+          <!-- Row 2: Functions & Brackets (8 buttons) -->
+          <div class="toolbar-row">
+            <button class="tool-btn-compact" data-insert="sin(" title="sin">sin</button>
+            <button class="tool-btn-compact" data-insert="cos(" title="cos">cos</button>
+            <button class="tool-btn-compact" data-insert="tan(" title="tan">tan</button>
+            <button class="tool-btn-compact" data-insert="log(" title="log">log</button>
+            <button class="tool-btn-compact" data-insert="ln(" title="ln">ln</button>
+            <button class="tool-btn-compact" data-insert="(" title="(">(</button>
+            <button class="tool-btn-compact" data-insert=")" title=")">)</button>
+            <button class="tool-btn-compact" data-insert="[" title="[">[</button>
+          </div>
+
+          <!-- Row 3: Symbols (8 buttons) -->
+          <div class="toolbar-row">
+            <button class="tool-btn-compact" data-insert="]" title="]">]</button>
+            <button class="tool-btn-compact" data-insert="π" title="Pi">π</button>
+            <button class="tool-btn-compact" data-insert="∞" title="Vô cực">∞</button>
+            <button class="tool-btn-compact" data-insert="α" title="Alpha">α</button>
+            <button class="tool-btn-compact" data-insert="β" title="Beta">β</button>
+            <button class="tool-btn-compact" data-insert="θ" title="Theta">θ</button>
+            <button class="tool-btn-compact" data-insert="Δ" title="Delta">Δ</button>
+            <button class="tool-btn-compact" data-insert="≤" title="≤">≤</button>
+          </div>
+
+          <!-- Row 4: More Symbols (8 buttons) -->
+          <div class="toolbar-row">
+            <button class="tool-btn-compact" data-insert="≥" title="≥">≥</button>
+            <button class="tool-btn-compact" data-insert="≠" title="≠">≠</button>
+            <button class="tool-btn-compact" data-insert="±" title="±">±</button>
+            <button class="tool-btn-compact" data-insert="+" title="+">+</button>
+            <button class="tool-btn-compact" data-insert="-" title="−">−</button>
+            <button class="tool-btn-compact" data-insert="×" title="×">×</button>
+            <button class="tool-btn-compact" data-insert="÷" title="÷">÷</button>
+            <button class="tool-btn-compact" data-insert="=" title="=">=</button>
+          </div>
+
+          <!-- Row 5: Operators (8 buttons) -->
+          <div class="toolbar-row">
+            <button class="tool-btn-compact" data-insert="<" title="<">&lt;</button>
+            <button class="tool-btn-compact" data-insert=">" title=">">&gt;</button>
+            <button class="tool-btn-compact" data-insert="," title=",">,</button>
+            <button class="tool-btn-compact" data-insert="." title=".">.</button>
+            <button class="tool-btn-compact" data-insert="0" title="0">0</button>
+            <button class="tool-btn-compact" data-insert="1" title="1">1</button>
+            <button class="tool-btn-compact" data-insert="2" title="2">2</button>
+            <button class="tool-btn-compact" data-insert="3" title="3">3</button>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="math-editor-actions">
+          <button class="btn-secondary" id="clearMathBtn">Xóa</button>
+          <button class="btn-secondary" onclick="document.getElementById('mathInputModal').classList.remove('show'); document.getElementById('modalOverlay').classList.remove('show');">Hủy</button>
+          <button class="btn-primary" id="insertMathBtn">Chèn vào tin nhắn</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Preview Modal -->
+  <div class="modal" id="imagePreviewModal">
+    <div class="modal-header">
+      <h2>📷 Xác nhận ảnh đề bài</h2>
+      <button class="close-modal-btn" data-close="imagePreviewModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="image-preview-container">
+        <img id="previewImage" src="" alt="Preview" style="max-width: 100%; border-radius: 8px; margin-bottom: 16px;">
+        <div class="ocr-result-container" id="ocrResultContainer" style="display: none;">
+          <div class="ocr-label">🔍 Kết quả OCR:</div>
+          <div class="ocr-result" id="ocrResult"></div>
+          <div class="ocr-confirm-question">Công thức có chính xác không?</div>
+          <div class="ocr-actions">
+            <button class="btn-secondary" id="editOcrBtn">✏️ Sửa lại</button>
+            <button class="btn-primary" id="confirmOcrBtn">✅ Chính xác</button>
+          </div>
+        </div>
+        <div class="image-actions" id="initialImageActions">
+          <button class="btn-secondary" onclick="document.getElementById('imagePreviewModal').classList.remove('show'); document.getElementById('modalOverlay').classList.remove('show');">Hủy</button>
+          <button class="btn-primary" id="processImageBtn">Xử lý ảnh</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

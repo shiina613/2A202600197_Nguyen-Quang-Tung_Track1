@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Đăng nhập MathHint - Gia sư toán THPT thông minh">
+  <title>Đăng nhập — MathHint</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body class="login-body">
+
+  <!-- Decorative blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="login-container">
+    <!-- Left - Branding -->
+    <div class="login-branding">
+      <div class="branding-content">
+        <div class="branding-icon">🧠</div>
+        <h1>MathHint</h1>
+        <p class="branding-tagline">Gia sư toán THPT thông minh</p>
+        <p class="branding-desc">Hỗ trợ bài tập bằng gợi ý — giúp em tự tư duy và nhớ lâu hơn!</p>
+
+        <div class="branding-features">
+          <div class="feature-item">
+            <span class="feature-icon">💡</span>
+            <span>3 cấp độ gợi ý thông minh</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🧠</span>
+            <span>Nhớ phương pháp đã dùng</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">📊</span>
+            <span>Báo cáo tiến độ cho phụ huynh</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🎯</span>
+            <span>Không đưa đáp án — chỉ gợi ý</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right - Login Form -->
+    <div class="login-form-section">
+      <div class="login-card">
+        <h2 class="login-title">Chào mừng trở lại! 👋</h2>
+        <p class="login-subtitle">Đăng nhập để bắt đầu học</p>
+
+        <!-- Role Selection -->
+        <div class="role-selector">
+          <button class="role-btn active" data-role="student" id="roleStudent">
+            <div class="role-icon">🎒</div>
+            <div class="role-label">Học sinh</div>
+          </button>
+          <button class="role-btn" data-role="parent" id="roleParent">
+            <div class="role-icon">👨‍👩‍👧</div>
+            <div class="role-label">Phụ huynh</div>
+          </button>
+        </div>
+
+        <form class="login-form" id="loginForm">
+          <div class="form-group">
+            <label class="form-label" for="email">Email hoặc số điện thoại</label>
+            <div class="input-icon-wrapper">
+              <span class="input-icon">✉️</span>
+              <input type="text" id="email" class="form-input" placeholder="name@example.com" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Mật khẩu</label>
+            <div class="input-icon-wrapper">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="password" class="form-input" placeholder="••••••••" autocomplete="current-password">
+              <button type="button" class="password-toggle" id="passwordToggle">👁️</button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox-label">
+              <input type="checkbox" checked>
+              <span class="checkbox-custom"></span>
+              Ghi nhớ đăng nhập
+            </label>
+            <a href="#" class="forgot-link">Quên mật khẩu?</a>
+          </div>
+
+          <button type="submit" class="login-submit-btn" id="loginBtn">
+            <span class="btn-text">Đăng nhập</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </form>
+
+        <div class="login-divider">
+          <span>hoặc</span>
+        </div>
+
+        <button class="social-btn google-btn">
+          <span class="social-icon">G</span>
+          Đăng nhập với Google
+        </button>
+
+        <p class="signup-prompt">
+          Chưa có tài khoản? <a href="#" class="signup-link">Đăng ký miễn phí</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Role selection
+    const roleBtns = document.querySelectorAll('.role-btn');
+    let selectedRole = 'student';
+
+    roleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        roleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedRole = btn.dataset.role;
+      });
+    });
+
+    // Password toggle
+    const passwordToggle = document.getElementById('passwordToggle');
+    const passwordInput = document.getElementById('password');
+    passwordToggle.addEventListener('click', () => {
+      const type = passwordInput.type === 'password' ? 'text' : 'password';
+      passwordInput.type = type;
+      passwordToggle.textContent = type === 'password' ? '👁️' : '🙈';
+    });
+
+    // Form submit
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('loginBtn');
+      btn.classList.add('loading');
+      btn.querySelector('.btn-text').textContent = 'Đang đăng nhập...';
+
+      setTimeout(() => {
+        if (selectedRole === 'student') {
+          window.location.href = 'index.html';
+        } else {
+          window.location.href = 'parent.html';
+        }
+      }, 1200);
+    });
+  </script>
+</body>
+</html>

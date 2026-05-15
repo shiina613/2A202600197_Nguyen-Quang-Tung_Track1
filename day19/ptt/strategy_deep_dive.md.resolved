@@ -1,0 +1,297 @@
+# MathHint — Phân tích chiến lược chuyên sâu
+
+## 1. "Giải thích lại" vs "Đưa gợi ý" — Có out-of-scope không?
+
+**Không out-of-scope** — nhưng cần phân biệt rõ 2 chế độ:
+
+| Chế độ | Khi nào | Ví dụ | Có đưa đáp án? |
+|:---|:---|:---|:---|
+| **Gợi ý giải bài** (Hint Mode) | HS đang giải bài cụ thể | "Cho y=x³-3x²+2, tìm cực trị" | ❌ Không |
+| **Giải thích khái niệm** (Explain Mode) | HS chưa hiểu lý thuyết | "Đạo hàm là gì?" | ✅ Giải thích đầy đủ |
+
+**Tại sao cần cả hai:**
+- Nếu HS hỏi "Cực trị là gì?" mà bot lại đưa hint thay vì giải thích → frustrating
+- Nếu HS hỏi "Giải bài này" mà bot giải luôn → mất mục đích Socratic
+
+**Giải pháp:** Bot tự phân loại intent:
+```
+HS: "Đạo hàm là gì?"        → Explain Mode → Giải thích đầy đủ + ví dụ
+HS: "Giải bài y=x³-3x²+2"   → Hint Mode    → Gợi ý từng bước, 3 hints
+HS: "Tại sao y'=0 là cực trị?" → Explain Mode → Giải thích điều kiện cần/đủ
+```
+
+> [!TIP]
+> **Explain Mode thực ra là lợi thế marketing:** "MathHint không chỉ giúp giải bài, mà còn dạy lại từ đầu nếu em chưa hiểu." → Phụ huynh thấy giá trị lớn hơn.
+
+---
+
+## 2. Làm thế nào để User sẵn lòng dùng, Buyer sẵn lòng trả?
+
+### Cho Học sinh (User) — Từ khóa: **Autonomy + Pride + Fun**
+
+| Chiến thuật | Cơ chế | Tâm lý đằng sau |
+|:---|:---|:---|
+| **"Em tự làm được!"** | Sau mỗi bài, hiện badge: "🎯 Tự giải với chỉ 1 gợi ý!" | **Competence** — cảm giác giỏi |
+| **Streak & Level** | 🔥 7 ngày liên tục. Level up: Newbie → Pro → Master | **Loss Aversion** — sợ mất streak |
+| **Chọn cách giải** | "Em muốn thử bảng xét dấu hay y''?" | **Autonomy** — em quyết, không phải bị ép |
+| **Easter egg khi giỏi** | Giải nhanh → bot khen: "Ủa nhanh vậy, em chuẩn bị thi Olympic hả? 😄" | **Ego boost** — muốn khoe |
+| **So sánh với chính mình** | "Tuần trước em cần 3 hints, tuần này chỉ 1!" | **Growth mindset** — thấy mình tiến bộ |
+
+> [!IMPORTANT]
+> **Nguyên tắc vàng:** Học sinh phải cảm thấy "Mình giỏi hơn nhờ app này" chứ không phải "App này khó chịu, không cho đáp án". Khác biệt nằm ở **cách frame trải nghiệm**.
+
+### Cho Phụ huynh (Buyer) — Từ khóa: **Visibility + Peace of mind + ROI**
+
+| Chiến thuật | Cơ chế | Tâm lý đằng sau |
+|:---|:---|:---|
+| **Push notification tối** | "Hôm nay con giải 5 bài, tự làm 4/5" | **Peace of mind** — biết con đang học |
+| **So sánh gia sư thật** | "199K/tháng vs 3.2 triệu/tháng gia sư" | **Anchoring** — thấy rẻ |
+| **Milestone celebration** | "🎉 Con đã master chương Đạo hàm!" | **Pride** — tự hào về con |
+| **Free trial 7 ngày** | Cho dùng Pro 7 ngày, sau đó hạ xuống Free | **Endowment Effect** — đã có rồi, không muốn mất |
+
+---
+
+## 3. Marketing cho từng đối tượng
+
+### 📱 Marketing cho Học sinh (User Acquisition)
+
+**Kênh:** TikTok, YouTube Shorts, Instagram Reels
+
+**Content strategy:**
+```
+Video 1: "POV: Bạn gặp bài cực trị lúc 11 đêm, không ai giải thích"
+→ Quay screen recording dùng MathHint, bot gợi ý, tự giải được
+→ Caption: "Tự giải được mà không cần xem đáp án, sướng vcl 🔥"
+
+Video 2: "Thử thách: Giải bài Toán 12 chỉ với 1 hint"
+→ Gamify content, tạo trend
+
+Video 3: "Streak 30 ngày trên MathHint — Kết quả?"
+→ Before/after điểm kiểm tra
+```
+
+**Tone:** Ngang hàng, Gen Z, không dạy đời. "Bạn" chứ không phải "em".
+
+**Hook:** _"App này KHÔNG cho đáp án — nhưng tại sao 10K học sinh vẫn dùng mỗi ngày?"_
+
+### 👨‍👩‍👦 Marketing cho Phụ huynh (Buyer Acquisition)
+
+**Kênh:** Facebook Groups (Hội phụ huynh), Zalo, Word-of-mouth
+
+**Content strategy:**
+```
+Post 1: "Tôi không biết dạy con Toán lớp 12. App này giúp tôi biết 
+         chính xác con đang yếu chỗ nào."
+→ Testimonial style, screenshot báo cáo
+
+Post 2: "Gia sư 3.2 triệu/tháng vs MathHint 199K/tháng — 
+         Con tôi tự giải được 87% bài."
+→ So sánh ROI rõ ràng
+
+Post 3: "Con tôi streak 30 ngày, tự giác học mà không cần nhắc."
+→ Đánh vào pain point "con không chịu học"
+```
+
+**Tone:** Chia sẻ kinh nghiệm, đồng cảm. "Anh/chị" chứ không phải hard sell.
+
+**Hook:** _"Lần đầu tiên tôi biết con mình đang học gì mỗi tối — mà không cần hỏi."_
+
+> [!TIP]
+> **Viral loop:** Khi phụ huynh share báo cáo lên Facebook ("Con tôi streak 30 ngày!") → phụ huynh khác thấy → tải app → vòng lặp tự nhiên.
+
+---
+
+## 4. Reframing "Tiến bộ ≠ Điểm cao" — Rào cản tâm lý cho Phụ huynh
+
+Đây là **thách thức khó nhất** vì văn hóa VN rất nặng "điểm số = thành công".
+
+### Chiến lược: Không chống lại, mà **redirect**
+
+**Sai:** "Điểm không quan trọng, quá trình mới quan trọng" → Phụ huynh VN sẽ bỏ ngoài tai.
+
+**Đúng:** "Điểm cao là KẾT QUẢ của quá trình đúng. MathHint đo quá trình để PREDICT kết quả."
+
+### Framework: Leading vs Lagging Indicators
+
+```
+Lagging Indicator (Kết quả)     ← Không kiểm soát được
+  └── Điểm kiểm tra 1 tiết
+  └── Điểm thi THPTQG
+
+Leading Indicators (Quá trình)  ← MathHint đo được
+  └── % bài tự giải (không cần hint 3)
+  └── Số chủ đề đã master
+  └── Thời gian phản hồi (giải nhanh hơn = hiểu sâu hơn)
+  └── Streak liên tục
+```
+
+### Cách rào trong sản phẩm
+
+**Onboarding cho phụ huynh (lần đầu mở app):**
+```
+Slide 1: "Điểm cao bắt đầu từ nền tảng vững"
+Slide 2: "MathHint đo 4 chỉ số dự báo điểm thi:"
+         ✅ Tỷ lệ tự giải   ✅ Số chủ đề master
+         ✅ Tốc độ giải bài  ✅ Tính kiên trì (streak)
+Slide 3: "Nghiên cứu cho thấy: HS có 4 chỉ số này cao 
+          có xác suất đạt 8+ là 85%"
+Slide 4: "Hãy theo dõi 4 chỉ số này — điểm sẽ đến."
+```
+
+**Trong báo cáo hàng tuần:**
+```
+"📊 Chỉ số dự báo tuần này:
+  Tự giải: 87% (↑12%) — Rất tốt
+  Master: 3/8 chủ đề — Đang tiến triển
+  
+  🎯 Dự báo: Con đang trên đà đạt 8+ điểm Toán 
+  nếu duy trì tốc độ này."
+```
+
+> [!IMPORTANT]
+> **Mấu chốt tâm lý:** Không nói "điểm không quan trọng". Thay vào đó, cho phụ huynh **công cụ mới** để dự đoán điểm — và công cụ đó chính là các leading indicators mà MathHint đo. Phụ huynh vẫn care điểm, nhưng giờ họ **tin rằng** theo dõi quá trình = biết trước kết quả.
+
+---
+
+## 5. Áp dụng Tâm lý học
+
+### Self-Determination Theory (Deci & Ryan)
+
+Con người có 3 nhu cầu tâm lý cơ bản. MathHint phải đáp ứng cả 3:
+
+| Nhu cầu | Áp dụng cho Học sinh | Áp dụng cho Phụ huynh |
+|:---|:---|:---|
+| **Autonomy** (Tự chủ) | Cho HS chọn cách giải, chọn chủ đề | Cho PH chọn tần suất báo cáo |
+| **Competence** (Năng lực) | Badge "Tự giải!", level up | "Con bạn đã master 5 chủ đề!" |
+| **Relatedness** (Kết nối) | Bot thân thiện, nhớ tên, nhớ lịch sử | Tạo cầu nối PH-con: "Hỏi con về bài hôm nay!" |
+
+### Hiệu ứng tâm lý cụ thể
+
+| Hiệu ứng | Áp dụng | Ví dụ |
+|:---|:---|:---|
+| **Endowment Effect** | Free trial 7 ngày Pro → hạ Free | "Bạn sắp mất báo cáo chi tiết!" |
+| **Loss Aversion** | Streak system | "🔥 Streak 14 ngày sẽ mất nếu hôm nay không học!" |
+| **Variable Reward** | Daily Challenge khác nhau mỗi ngày | Hôm nay dễ, mai khó → dopamine loop |
+| **Social Proof** | "2,847 bạn đang online học cùng bạn" | Giảm cảm giác cô đơn khi học |
+| **IKEA Effect** | HS tự giải = trân trọng kết quả hơn | "Em tự làm bài này đó! Không ai giúp cả!" |
+| **Zeigarnik Effect** | Bài đang giải dở → push notification | "Bài cực trị của em đang chờ... 📝" |
+
+### Behavioral Design cho Habit Loop
+
+```
+Học sinh:
+  Trigger  → "🔔 Daily Challenge mới!" (Push 19:00)
+  Action   → Mở app, giải 1 bài (< 5 phút)
+  Reward   → "🎯 Streak +1! Badge mới!" (Variable)
+  Investment → Streak càng dài, càng sợ mất
+
+Phụ huynh:
+  Trigger  → "📊 Báo cáo tối nay" (Push 21:00)  
+  Action   → Đọc 30 giây
+  Reward   → An tâm / Tự hào (Variable: hôm tốt, hôm chưa tốt)
+  Investment → Dữ liệu lịch sử càng nhiều, càng khó rời
+```
+
+---
+
+## 6. Giải pháp Anti-Hallucination cho Toán
+
+Đây là vấn đề kỹ thuật quan trọng nhất. Giải pháp: **Hybrid Pipeline**.
+
+### Kiến trúc Anti-Hallucination
+
+```
+Input (Bài toán từ HS)
+        │
+        ▼
+┌──────────────────┐
+│ 1. Intent Router  │ ← Phân loại: Explain? Hint? Calculate?
+└──────┬───────────┘
+       │
+       ├──── Explain Mode ──▶ RAG Lookup (ChromaDB)
+       │                      └─▶ LLM sinh câu trả lời + [Tham chiếu]
+       │
+       ├──── Hint Mode ────▶ RAG Lookup (lấy method + example)
+       │                      └─▶ LLM sinh hint Socratic + [Tham chiếu]
+       │
+       └──── Calculate ────▶ Tool Call: Python/SymPy
+                              └─▶ Kết quả chính xác 100%
+                              └─▶ LLM format kết quả đẹp
+```
+
+### Chi tiết từng lớp bảo vệ
+
+#### Lớp 1: Tool-Use cho Tính toán (KHÔNG để LLM tự tính)
+
+```python
+# LLM KHÔNG tự tính. Gọi SymPy:
+from sympy import *
+x = Symbol('x')
+y = x**3 - 3*x**2 + 2
+dy = diff(y, x)          # → 3x² - 6x (chính xác 100%)
+critical = solve(dy, x)  # → [0, 2] (chính xác 100%)
+d2y = diff(dy, x)        # → 6x - 6
+# Xét dấu y'' tại x=0: 6(0)-6 = -6 < 0 → Cực đại
+# Xét dấu y'' tại x=2: 6(2)-6 = 6 > 0 → Cực tiểu
+```
+
+> [!IMPORTANT]
+> **Quy tắc:** Mọi phép tính số học phải qua SymPy/WolframAlpha. LLM chỉ làm 2 việc: (1) hiểu đề bài, (2) diễn đạt kết quả thành hint Socratic.
+
+#### Lớp 2: RAG có Tham chiếu (Citation)
+
+```
+Knowledge Base (ChromaDB):
+├── concepts/
+│   ├── dao_ham.md          [ID: CONCEPT_001]
+│   ├── cuc_tri.md          [ID: CONCEPT_002]
+│   └── bang_bien_thien.md  [ID: CONCEPT_003]
+├── methods/
+│   ├── tim_cuc_tri_bang_y_prime.md  [ID: METHOD_001]
+│   └── tim_cuc_tri_bang_y_double.md [ID: METHOD_002]
+└── examples/
+    ├── cuc_tri_ham_bac_3.md [ID: EXAMPLE_001]
+    └── ...
+```
+
+Bot response luôn kèm citation:
+```
+"Để tìm cực trị, em cần tính đạo hàm y' [REF: CONCEPT_001] 
+rồi giải y'=0 [REF: METHOD_001]."
+```
+
+→ Nếu phụ huynh/giáo viên muốn verify → click vào ref → thấy nguồn chính xác.
+
+#### Lớp 3: Confidence Scoring
+
+```python
+# Sau khi LLM sinh response:
+confidence = check_response(response, rag_sources, sympy_result)
+
+if confidence > 0.9:
+    send(response)  # Gửi bình thường
+elif confidence > 0.7:
+    send(response + "\n⚠️ Em nên kiểm tra lại với thầy/cô nhé!")
+else:
+    send("Bài này hơi phức tạp, mình chưa chắc chắn. "
+         "Em hỏi thầy/cô để được hỗ trợ chính xác nhất nhé! 🙏")
+```
+
+#### Lớp 4: Human-in-the-loop
+
+- Nút **"Báo lỗi"** trong mỗi tin nhắn bot
+- Tuần đầu: review 100% responses. Tuần 2+: review flagged responses
+- Xây dựng test suite: 500 bài toán THPT phổ biến → chạy regression test mỗi khi update prompt
+
+### Tổng kết Pipeline
+
+| Lớp | Chức năng | Hiệu quả |
+|:---|:---|:---|
+| **Tool-Use (SymPy)** | Tính toán chính xác | Loại bỏ 100% lỗi tính toán |
+| **RAG + Citation** | Kiến thức có nguồn | Loại bỏ ~90% hallucination lý thuyết |
+| **Confidence Score** | Tự đánh giá độ tin cậy | Tránh gửi response không chắc |
+| **Human Review** | Kiểm tra bởi người | Bắt những gì AI bỏ sót |
+| **Nút Báo lỗi** | Feedback từ user | Cải thiện liên tục |
+
+> [!TIP]
+> **Triết lý:** LLM giỏi ngôn ngữ nhưng dở tính toán. SymPy giỏi tính toán nhưng không biết nói. Kết hợp cả hai = gia sư vừa tính đúng, vừa giải thích hay.

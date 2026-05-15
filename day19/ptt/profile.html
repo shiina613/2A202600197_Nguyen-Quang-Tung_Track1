@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hồ sơ cá nhân - MathHint">
+  <title>Hồ sơ cá nhân — MathHint</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: block;
+      overflow: auto;
+      background: var(--bg-page);
+    }
+
+    /* ===== TOP NAV ===== */
+    .profile-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      background: var(--bg-sidebar);
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 16px; }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-pill);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .back-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+    /* ===== PROFILE PAGE ===== */
+    .profile-page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .profile-hero {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 32px;
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 24px;
+    }
+
+    .hero-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd166, #f7a94b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      font-weight: 800;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(247, 169, 75, 0.3);
+      flex-shrink: 0;
+    }
+
+    .hero-info h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .hero-email {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .role-tag.student { background: var(--accent-main-light); color: var(--accent-main); }
+    .role-tag.streak { background: #fff8e7; color: #d97706; }
+    .role-tag.pro { background: var(--accent-green-light); color: #1a8a5e; }
+
+    /* ===== SECTIONS ===== */
+    .profile-section {
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border-light);
+      background: var(--bg-page);
+    }
+
+    .section-icon { font-size: 20px; }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .section-body { padding: 24px; }
+
+    /* Info Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .info-item label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .info-item .info-value {
+      padding: 12px 16px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Stats Cards */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 20px 12px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+    }
+
+    .stat-card .stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .stat-card .stat-desc {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .stat-num.blue { color: var(--accent-main); }
+    .stat-num.green { color: var(--accent-green); }
+    .stat-num.amber { color: var(--accent-amber); }
+    .stat-num.fire { color: #d97706; }
+
+    /* Mastery Bars */
+    .mastery-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .mastery-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mastery-name {
+      width: 140px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      flex-shrink: 0;
+    }
+
+    .mastery-bar-lg {
+      flex: 1;
+      height: 10px;
+      background: var(--border-light);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mastery-bar-lg .fill {
+      height: 100%;
+      border-radius: 5px;
+      transition: width 0.8s ease;
+    }
+
+    .mastery-val {
+      width: 40px;
+      text-align: right;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .mastery-val.high { color: var(--accent-green); }
+    .mastery-val.mid { color: var(--accent-amber); }
+    .mastery-val.low { color: var(--accent-red); }
+
+    /* Badge Collection */
+    .badge-collection {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .badge-card {
+      text-align: center;
+      padding: 16px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+    }
+
+    .badge-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    .badge-card.earned {
+      background: linear-gradient(135deg, #fff8e7, #fff1cc);
+      border-color: #f0d68a;
+    }
+
+    .badge-card.locked {
+      background: var(--bg-page);
+      opacity: 0.5;
+    }
+
+    .badge-card .badge-emoji { font-size: 32px; margin-bottom: 8px; display: block; }
+    .badge-card .badge-name { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+    .badge-card .badge-date { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+    .badge-card.locked .badge-name { color: var(--text-muted); }
+
+    /* Parent Link */
+    .parent-link-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+    }
+
+    .parent-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a78bfa, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .parent-info .parent-name { font-size: 15px; font-weight: 700; }
+    .parent-info .parent-email { font-size: 13px; color: var(--text-muted); }
+    .parent-info .parent-role { font-size: 12px; color: var(--accent-purple); font-weight: 700; }
+
+    .linked-status {
+      margin-left: auto;
+      padding: 4px 12px;
+      background: var(--accent-green-light);
+      color: #1a8a5e;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: var(--radius-pill);
+    }
+
+    /* Prediction */
+    .prediction-banner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px;
+      background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+      border: 1px solid #c7d2fe;
+      border-radius: var(--radius-md);
+      margin-top: 16px;
+    }
+
+    .prediction-number {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--accent-main);
+    }
+
+    .prediction-detail h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .prediction-detail p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      .profile-page { padding: 16px; }
+      .profile-hero { flex-direction: column; text-align: center; padding: 24px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .badge-collection { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <nav class="profile-nav">
+    <div class="nav-left">
+      <a href="index.html" class="back-btn">← Quay lại</a>
+      <div class="logo">
+        <div class="logo-icon">🧠</div>
+        <span class="logo-text">MathHint</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <a href="login.html" style="display:flex;align-items:center;gap:6px;padding:8px 16px;background:var(--accent-red-light);border:1px solid var(--accent-red);border-radius:var(--radius-pill);font-family:inherit;font-size:13px;font-weight:700;color:var(--accent-red);cursor:pointer;text-decoration:none;transition:var(--transition);">
+        🚪 Đăng xuất
+      </a>
+    </div>
+  </nav>
+
+  <main class="profile-page">
+
+    <!-- Hero -->
+    <div class="profile-hero">
+      <div class="hero-avatar">Q</div>
+      <div class="hero-info">
+        <h1>Nguyễn Văn Quang</h1>
+        <div class="hero-email">quang@email.com</div>
+        <div class="hero-badges">
+          <span class="role-tag student">🎒 Học sinh THPT</span>
+          <span class="role-tag streak">🔥 Streak 14 ngày</span>
+          <span class="role-tag pro">⭐ Gói Pro</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thông tin cá nhân -->
+    <div class="profile-section">
+      <div class="section-header">
+        <span class="section-icon">👤</span>
+        <span class="section-title">Thông tin cá nhân</span>
+      </div>
+      <div class="section-body">
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Họ và tên</label>
+            <div class="info-value">Nguyễn Văn Quang</div>
+          </div>
+          <div class="info-item">
+            <label>Email</label>
+            <div class="info-value">quang@email.com</div>
+          </div>
+          <div class="info-item">
+            <label>Trường học</label>
+            <div class="info-value">THPT Chuyên KHTN</div>
+          </div>
+          <div class="info-item">
+            <label>Lớp</label>
+            <div class="info-value">12A1</div>
+          </div>
+          <div class="info-item">
+            <label>Mục tiêu điểm Toán</label>
+            <div class="info-value">9+</div>
+          </div>
+          <div class="info-item">
+            <label>Ngày tham gia</label>
+            <div class="info-value">15/03/2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thống kê học tập -->
+    <div class="profile-section">
+      <div class="section-header">
+        <span class="section-icon">📊</span>
+        <span class="section-title">Thống kê học tập</span>
+      </div>
+      <div class="section-body">
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-num blue">127</div>
+            <div class="stat-desc">Tổng bài đã giải</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num green">87%</div>
+            <div class="stat-desc">Tỷ lệ tự giải</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num fire">14 🔥</div>
+            <div class="stat-desc">Streak hiện tại</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num amber">21</div>
+            <div class="stat-desc">Streak dài nhất</div>
+          </div>
+        </div>
+
+        <div class="prediction-banner">
+          <div class="prediction-number">8.5+</div>
+          <div class="prediction-detail">
+            <h4>Dự báo điểm Toán</h4>
+            <p>Dựa trên 4 chỉ số: Tỷ lệ tự giải (87%), Số chủ đề master (2/8), Tốc độ giải bài, Tính kiên trì (14 ngày streak)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mastery chuyên đề -->
+    <div class="profile-section">
+      <div class="section-header">
+        <span class="section-icon">📈</span>
+        <span class="section-title">Mastery chuyên đề</span>
+      </div>
+      <div class="section-body">
+        <div class="mastery-list">
+          <div class="mastery-row">
+            <span class="mastery-name">Đạo hàm</span>
+            <div class="mastery-bar-lg"><div class="fill green" style="width: 92%"></div></div>
+            <span class="mastery-val high">92%</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-name">Phương trình bậc 2</span>
+            <div class="mastery-bar-lg"><div class="fill green" style="width: 88%"></div></div>
+            <span class="mastery-val high">88%</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-name">Cực trị hàm số</span>
+            <div class="mastery-bar-lg"><div class="fill green" style="width: 75%"></div></div>
+            <span class="mastery-val high">75%</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-name">Bảng biến thiên</span>
+            <div class="mastery-bar-lg"><div class="fill amber" style="width: 60%"></div></div>
+            <span class="mastery-val mid">60%</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-name">Tích phân</span>
+            <div class="mastery-bar-lg"><div class="fill amber" style="width: 45%"></div></div>
+            <span class="mastery-val mid">45%</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-name">Lượng giác</span>
+            <div class="mastery-bar-lg"><div class="fill weak-fill" style="width: 30%"></div></div>
+            <span class="mastery-val low">30%</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-name">Số phức</span>
+            <div class="mastery-bar-lg"><div class="fill weak-fill" style="width: 20%"></div></div>
+            <span class="mastery-val low">20%</span>
+          </div>
+          <div class="mastery-row">
+            <span class="mastery-name">Hình học không gian</span>
+            <div class="mastery-bar-lg"><div class="fill weak-fill" style="width: 10%"></div></div>
+            <span class="mastery-val low">10%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="profile-section">
+      <div class="section-header">
+        <span class="section-icon">🏆</span>
+        <span class="section-title">Thành tích</span>
+      </div>
+      <div class="section-body">
+        <div class="badge-collection">
+          <div class="badge-card earned">
+            <span class="badge-emoji">🔥</span>
+            <div class="badge-name">Streak 7 ngày</div>
+            <div class="badge-date">28/04/2026</div>
+          </div>
+          <div class="badge-card earned">
+            <span class="badge-emoji">🧠</span>
+            <div class="badge-name">Tự giải 10 bài</div>
+            <div class="badge-date">30/04/2026</div>
+          </div>
+          <div class="badge-card earned">
+            <span class="badge-emoji">🏆</span>
+            <div class="badge-name">Master Đạo hàm</div>
+            <div class="badge-date">02/05/2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phụ huynh liên kết -->
+    <div class="profile-section">
+      <div class="section-header">
+        <span class="section-icon">👨‍👩‍👧</span>
+        <span class="section-title">Phụ huynh liên kết</span>
+      </div>
+      <div class="section-body">
+        <div class="parent-link-card">
+          <div class="parent-avatar">PH</div>
+          <div class="parent-info">
+            <div class="parent-name">Nguyễn Anh Quang</div>
+            <div class="parent-email">anhquang@email.com</div>
+            <div class="parent-role">Phụ huynh</div>
+          </div>
+          <span class="linked-status">✅ Đã liên kết</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

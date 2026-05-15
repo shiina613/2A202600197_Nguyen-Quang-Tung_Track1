@@ -1,33 +1,36 @@
-# TWITTER PITCH — MathHint
+# Twitter Pitch — SmartHint AI
 
-## Version 1: Twitter Pitch (280 ký tự)
+**Audience:** Seed VC
+**Character count:** 274 ký tự
 
-Học sinh muốn công cụ hỗ trợ giải bài tập?
-Phụ huynh muốn sản phẩm giúp con tốt lên và đồng hành cùng con?
-EdTech có thêm sản phẩm tiềm năng?
+---
 
-MathHint - AI hỗ trợ Toán THPT, áp dụng phương pháp giảng dạy Socratic . Beta test đang mở miễn phí.
+## Twitter Pitch (274 ký tự)
 
-👉 Click để xem thêm: [link]
+> 353K học sinh lớp 12 VN dải 5–7đ bế tắc Phần III đề TN mới — solver chỉ giải hộ, không cứu được trong phòng thi. SmartHint AI: gia sư Socratic ép tự tính, verify bằng tool, align đề Bộ. Pilot 200 HS: target completion >60%. Gross margin 73%. Gọi 700M VNĐ seed, 10K paid users/12 tháng.
 
-**Character count:** 279 ký tự ✅
+---
 
-## Version 2: Script đọc 60 giây
+## Script đọc to (50–55 giây)
 
-**[0-8 giây — Hook]**
-1.2 triệu học sinh Việt Nam đăng ký thi THPTQG 2026 — cao nhất từ trước đến nay. Gia sư 1-1 tốn 2 triệu mỗi tháng — ngoài tầm với nhiều gia đình.
+Mỗi năm hơn một triệu học sinh Việt Nam thi tốt nghiệp Toán — nhưng chỉ 12% đạt 7 điểm trở lên.
 
-**[8-20 giây — Problem + Insight]**
-Các app hiện tại như Photomath chỉ cho đáp án. Kết quả? Retention Day 30 chỉ 2% — thấp nhất mọi ngành. Tại sao? Học sinh ỉ lại, phụ huynh thất vọng. Họ không trả tiền cho đáp án — họ trả tiền cho "con tự giải được".
+353 ngàn em dải 5–7 điểm — nhóm đông nhất — bế tắc mỗi đêm ở Phần II và Phần III đề mới. Ứng dụng giải toán như QANDA chỉ đưa đáp án — nhưng Phần III yêu cầu học sinh **tự gõ số**. Chụp đáp án **không cứu được** ngày 27 tháng 6 trong phòng thi.
 
-**[20-35 giây — Solution]**
-MathHint là gia sư AI Toán THPT, phương pháp Socratic — gợi ý từng bước, KHÔNG đưa đáp án. Học sinh tự giải được → cảm giác tự hào. Phụ huynh nhận báo cáo hàng tối: "Con đã giải 5 bài, tự làm 4/5".
+SmartHint AI là gia sư Socratic, dùng phương pháp Dual-Scaffolding — trắc nghiệm gợi hướng, rồi ép tự tính. Mọi kết quả được kiểm bằng tool tính toán thật, không phải AI tính nhẩm. Nội dung align trực tiếp với 18 đề tham khảo Bộ Giáo dục.
 
-**[35-50 giây — Validation]**
-Prototype hoàn chỉnh: Chat UI + Parent Dashboard. Tech validated: Gemini 2.5 Flash-Lite $0.10 per 1M tokens — margin 65%. Target retention Day 30 = 15%, gấp 7.5 lần industry benchmark nhờ gamification + dual-stakeholder model.
+Chạy trên Gemini Flash-Lite, chi phí API khoảng 37 ngàn đồng trên mỗi user mỗi tháng, giá bán 139 ngàn — gross margin 73%.
 
-**[50-60 giây — Ask]**
-Chúng tôi đang gọi 150 triệu VND pre-seed để run pilot 200 users trong 6 tháng. Validate retention >30% Day 7, >15% Day 30, conversion >10%. Nếu đạt → Raise 500M VND seed để scale 2,000 users.
+Bọn em đang tìm 700 triệu đồng pre-seed. Mục tiêu: 200 học sinh pilot mùa ôn này, scale lên 10 ngàn paid users trong 12 tháng.
 
-**Total time:** 58 giây ✅
+---
 
+## Self-check
+
+- [x] Mở đầu bằng số cụ thể ("353K học sinh")
+- [x] Insight phản trực giác ("solver không cứu được Phần III")
+- [x] Có ≥2 con số cụ thể (353K, 12%, 73%, 139K, 700M)
+- [x] Differentiator rõ ("ép tự tính, verify bằng tool")
+- [x] Ask cụ thể (700M VNĐ, 10K paid users / 12 tháng)
+- [x] Đọc to dưới 60 giây (ước ~52 giây)
+- [x] Match audience Seed VC (vision + early traction target)

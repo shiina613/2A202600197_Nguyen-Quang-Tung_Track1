@@ -1,120 +1,36 @@
-# TWITTER PITCH — MathHint
+# PITCH MEMO — SmartHint AI
 
-**Template: 280 ký tự bán cả startup**
-
----
-
-## The Pitch
-
-**Bon em là MathHint.** Bon em giúp 1.2M học sinh THPTQG giải quyết bài Toán khó bằng gia sư AI Socratic (gợi ý, không cho đáp án).
-
-Prototype xong, tech validated (Gemini $0.10/1M, margin 65%). LTV/CAC target 6x+, D30 retention 15% (vs industry 2%).
-
-Gọi **150M VND pre-seed** để run pilot 200 users trong 6 tháng.
+**Audience:** Seed VC (ThinkZone Ventures / Antler Vietnam)
 
 ---
 
-## Breakdown (Chi tiết đằng sau 280 ký tự)
+## 1. THE PROBLEM
 
-### 1. Tên startup
-**MathHint**
+Mỗi năm, hơn **1,1 triệu** học sinh lớp 12 Việt Nam thi tốt nghiệp THPT môn Toán — nhưng chỉ **12,23%** đạt **≥7 điểm** (phổ điểm TN 2025). Nhóm **353.000 em** dải 5–7đ — đông nhất và "gần đích" nhất — bế tắc hàng đêm ở Phần II (Đúng/Sai) và Phần III (trả lời ngắn) của đề mới. Công cụ hiện có (QANDA, ChatGPT) chỉ **giải hộ** — kém hữu dụng nhất đúng ở phần phân hoá điểm cao nhất, nơi học sinh phải **tự tính ra số**.
 
-### 2. Tập khách hàng cụ thể
-**1.2M học sinh** đăng ký thi THPTQG 2026 (Bộ GD&ĐT, tháng 5/2026)
+## 2. THE INSIGHT
 
-### 3. Pain rõ ràng
-Gặp bài Toán khó, không ai giải thích. Gia sư 1-1 tốn 2 triệu/tháng, ngoài tầm với. Các app hiện tại (Photomath) chỉ cho đáp án — không dạy tư duy.
+Đề Toán TN mới (2025+) vô tình tạo ra một **khe sản phẩm**: Phần III "trả lời ngắn" yêu cầu học sinh gõ số — "chụp ra đáp án" của solver **không chuyển được vào phòng thi**. Ai nắm được vòng lặp **"gợi ý → tự tính → đúng"** trên đúng cấu trúc đề này sẽ sở hữu cohort ôn TN mỗi năm.
 
-### 4. AI product, có differentiator
-**Gia sư AI Socratic:**
-- Gợi ý 3-5 hints động, **KHÔNG** cho đáp án
-- Dual-stakeholder: Học sinh dùng, phụ huynh giám sát qua báo cáo hàng tối
-- Anti-hallucination: SymPy verification → 100% accuracy
+## 3. THE SOLUTION
 
-**Tech stack:**
-- Gemini 2.5 Flash Lite ($0.10/$0.40 per 1M tokens)
-- RAG (ChromaDB) + curated Vietnamese curriculum
-- Credit system: Trả theo chi phí API thực tế
+**SmartHint AI** là gia sư AI kiểu Socratic, dùng phương pháp **Dual-Scaffolding** (Trắc nghiệm định hướng + Ép tự tính toán) — align trực tiếp với cấu trúc Phần II + III đề Bộ GD&ĐT. Differentiator cốt lõi so với QANDA/ChatGPT: **không có nút "xem full lời giải"** — mọi kết quả số học sinh gõ đều được **kiểm chứng bằng tool tính toán thực** (không để LLM tính nhẩm), RAG bắt buộc trích nguồn từ bank 18 đề tham khảo Bộ. AI chạy trên **Gemini 2.5 Flash-Lite** (chi phí API ~37.200đ/user/tháng ở mức dùng 70 phút/ngày), cho phép định giá **139.000 VNĐ/tháng** với **gross margin ~73%**.
 
-### 5. Traction số cụ thể
-**Hiện trạng (tháng 5/2026):**
-- ✅ Prototype hoàn chỉnh (Chat UI + Parent Dashboard)
-- ✅ Tech validated: Gemini $0.10/1M, margin 65%
-- ✅ Unit economics projected: LTV/CAC target 6x+
-- ❌ Chưa có pilot users (đang tuyển)
+## 4. WHY NOW
 
-**Target metrics sau pilot:**
-- D7 retention >30% (industry: 5-10%)
-- D30 retention >15% (industry: 2%)
-- Conversion free→paid >10%
+**(1)** Đề Toán TN mới (Phần II Đ/S 4 ý + Phần III trả lời ngắn) áp dụng từ 2025 — solver cũ mất lợi thế đúng chỗ phân hoá. **(2)** Thông tư 29/2024 siết dạy thêm tại trường (hiệu lực 14/2/2025) → phụ huynh tìm kênh ngoài; chi phí trung tâm ~2tr/tháng. **(3)** Countdown tháng **6/2026** — pain cấp tính, willingness chịu friction cao nhất. **(4)** Chi phí API Foundation Model giảm 80% so với 2 năm trước (Gemini Flash-Lite: $0.10/1M token input), cho phép freemium AI Tutor lần đầu khả thi tại VN.
 
-### 6. LTV/CAC hoặc số từ Day 17 PMF
-**Projected unit economics:**
-- LTV/CAC: 6x+ (target)
-- Margin: 65% với Gemini 2.5 Flash Lite
-- Payback: 2-3 tháng (dự kiến)
+## 5. TRACTION / PROOF
 
-**Benchmarks:**
-- Industry D30 retention: 2% (Business of Apps, 2026)
-- MathHint target: 15% (7.5x industry)
+- **Wedge cohort:** 353.000 học sinh lớp 12 dải 5–7đ (31,4% từ 1.126.172 thí sinh Toán TN 2025).
+- **PMF signals (Day 17):** Target Session Completion Rate >60%, next-item correctness (bài cùng dạng, không AI) là North Star transfer learning.
+- **Unit Economics (Day 18):** ARPU 139.000đ/tháng × tenure 4–6 tháng (ARPU mùa ôn ~556K–834K). Chi phí API+hidden costs ~37.200đ/user/tháng (kiểu 2, bình thường). **Gross Margin ~73%**. LTV/CAC mục tiêu >3x. CAC Payback mục tiêu <6 tháng (trước kỳ thi).
+- **Pilot plan:** 2 tuần Wizard of Oz (Zalo) + 2 tuần closed beta; target **200 học sinh** lớp 12 Hà Nội + TP.HCM.
 
-### 7. Số tiền gọi
-**150M VND pre-seed**
+## 6. THE ASK
 
-### 8. Next milestone trong 12 tháng
-**Validation Plan (6 tháng):**
-
-| Milestone | Timeline | Budget | Success Criteria |
-|:---|:---:|:---:|:---|
-| Run pilot 50→200 users | Tháng 1-4 | 50M | D7 >30%, D30 >15% |
-| Validate pricing | Tháng 2-5 | 30M | Conversion >10%, LTV/CAC >3x |
-| Build knowledge base | Tháng 1-4 | 40M | 200 bài curated + verified |
-| Iterate product | Tháng 3-6 | 30M | NPS >50, tự giải >70% |
-
-**Go/No-Go sau 6 tháng:**
-- ✅ GO: D30 >15%, Conversion >10%, NPS >50 → Raise 500M VND seed để scale 200→2,000 users
-- ❌ NO-GO: Pivot hoặc shutdown
-
----
-
-## Full Context (Thông tin bổ sung)
-
-### Market Size
-**TAM:** Vietnam e-learning $2.0B năm 2025 → $8.7B năm 2034 (CAGR 17.68%, IMARC Group)  
-**SAM:** 252K families × 159K/tháng × 12 = $192M/năm (480B VND)  
-**SOM Year 1:** 200 users = 0.08% SAM
-
-### Why Now
-1. Chi phí LLM giảm 90%: GPT-4 $30/1M → Gemini $0.10/1M
-2. E-learning VN bùng nổ: $2.0B → $8.7B (2025-2034)
-3. Kỳ thi THPTQG 2026: 1.2M học sinh (cao nhất từ trước đến nay)
-
-### Competitive Moat
-1. **Data moat:** 500 bài Toán THPT curated, SGK Việt Nam
-2. **Distribution moat:** Dual-stakeholder (phụ huynh buyer, học sinh user)
-3. **Trust moat:** SymPy verification, RAG + citation, confidence scoring
-
-### Team
-**Nguyễn Quang Tùng** — Founder & CEO
-- 5 năm AI/ML engineer (NLP, LLM fine-tuning)
-- 3 năm dạy gia sư Toán THPT
-- Track record: 2 AI products (1 acquired, 1 profitable)
-
-**Advisors:**
-- Giáo viên Toán THPT 15 năm (content validation)
-- Ex-PM tại Edtech unicorn (go-to-market)
-
-### Risks & Mitigation
-| Risk | Mitigation |
-|:---|:---|
-| AI hallucination | SymPy verification, RAG, confidence scoring |
-| User churn | Gamification (streak, badge), Socratic method |
-| Gemini tăng giá | Fallback GPT-4o mini, self-host Llama 3.1 |
-| OpenAI competitor | Data moat, distribution moat, pivot B2B |
-
----
-
-**Contact:**
-- Email: quangtung@mathhint.vn
-- Phone: 0123-456-789
-- Demo: https://mathhint.vn/demo
+Gọi **700 triệu VNĐ** (~$27K) pre-seed để:
+- **Tháng 1–2:** Ship MVP Dual-Scaffolding trên 3 chuyên đề (Hàm số, Mũ-Log, Nguyên hàm) + bank Phần II/III từ 18 đề Bộ; chạy WOZ + closed beta 200 HS.
+- **Tháng 3–4:** Validate Session Completion >60% + next-item correctness; bật freemium trên Threads + Zalo/FB nhóm ôn TN.
+- **Tháng 5–6:** Scale lên **3.000 paid users** trước kỳ thi 27/6/2026; pre-launch cohort lớp 11 (V2) qua referral.
+- **12-month milestone:** 10.000 paid users, MRR ~1,39 tỷ VNĐ, runway ≥18 tháng.

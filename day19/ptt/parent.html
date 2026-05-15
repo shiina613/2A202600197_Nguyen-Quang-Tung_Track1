@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Báo cáo tiến độ học tập - MathHint dành cho Phụ huynh">
+  <title>Phụ huynh — MathHint</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="parent.css">
+</head>
+<body class="parent-body">
+
+  <!-- Top Nav -->
+  <nav class="parent-nav">
+    <div class="nav-left">
+      <div class="logo">
+        <div class="logo-icon">🧠</div>
+        <span class="logo-text">MathHint</span>
+      </div>
+      <span class="nav-role-badge">Phụ huynh</span>
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn" title="Thông báo">
+        🔔
+        <span class="notif-dot"></span>
+      </button>
+      <div class="nav-user-wrapper">
+        <div class="nav-user" id="parentProfileBtn">
+          <div class="avatar">PH</div>
+          <div>
+            <div class="user-name">Anh Quang</div>
+            <div class="user-role">Phụ huynh</div>
+          </div>
+          <span class="profile-arrow" id="parentProfileArrow">▾</span>
+        </div>
+        <!-- Profile Dropdown -->
+        <div class="profile-dropdown parent-dropdown" id="parentProfileDropdown">
+          <div class="dropdown-header">
+            <div class="avatar avatar-lg">PH</div>
+            <div>
+              <div class="dropdown-name">Nguyễn Anh Quang</div>
+              <div class="dropdown-email">anhquang@email.com</div>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <span class="dropdown-icon">👤</span> Hồ sơ cá nhân
+          </a>
+          <a href="#" class="dropdown-item">
+            <span class="dropdown-icon">👦</span> Quản lý học sinh
+          </a>
+          <a href="#" class="dropdown-item">
+            <span class="dropdown-icon">🔔</span> Cài đặt thông báo
+          </a>
+          <a href="#" class="dropdown-item">
+            <span class="dropdown-icon">⚙️</span> Cài đặt
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="login.html" class="dropdown-item logout-item">
+            <span class="dropdown-icon">🚪</span> Đăng xuất
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="parent-main">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Báo cáo học tập 📊</h1>
+        <p class="page-subtitle">Theo dõi tiến độ học tập của con</p>
+      </div>
+      <div class="child-selector">
+        <label class="child-label">Học sinh:</label>
+        <div class="child-chip active">
+          <span class="child-avatar">Q</span>
+          <span>Quang</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+      <div class="summary-card card-blue">
+        <div class="card-icon-wrap blue">📚</div>
+        <div class="card-info">
+          <div class="card-value">24</div>
+          <div class="card-label">Bài đã giải tuần này</div>
+        </div>
+        <div class="card-trend up">↑ 20%</div>
+      </div>
+      <div class="summary-card card-green">
+        <div class="card-icon-wrap green">✅</div>
+        <div class="card-info">
+          <div class="card-value">87%</div>
+          <div class="card-label">Tỷ lệ tự giải được</div>
+        </div>
+        <div class="card-trend up">↑ 12%</div>
+      </div>
+      <div class="summary-card card-amber">
+        <div class="card-icon-wrap amber">⏱️</div>
+        <div class="card-info">
+          <div class="card-value">45 ph</div>
+          <div class="card-label">Thời gian học TB/ngày</div>
+        </div>
+        <div class="card-trend up">↑ 8%</div>
+      </div>
+      <div class="summary-card card-purple">
+        <div class="card-icon-wrap purple">🔥</div>
+        <div class="card-info">
+          <div class="card-value">7 ngày</div>
+          <div class="card-label">Chuỗi ngày học liên tục</div>
+        </div>
+        <div class="card-trend neutral">—</div>
+      </div>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="content-grid">
+
+      <!-- Left: Daily Reports -->
+      <div class="reports-section">
+        <div class="section-header">
+          <h2 class="section-title">📋 Báo cáo hàng ngày</h2>
+          <div class="time-filter">
+            <button class="filter-btn active">Tuần này</button>
+            <button class="filter-btn">Tháng này</button>
+          </div>
+        </div>
+
+        <!-- Today report -->
+        <div class="report-card today">
+          <div class="report-header">
+            <div class="report-date">
+              <span class="date-badge today-badge">Hôm nay</span>
+              <span class="date-text">Thứ 2, 05/05/2026</span>
+            </div>
+          </div>
+          <div class="report-body">
+            <p class="report-greeting">🌟 Chào Anh Quang! Hôm nay con <strong>Quang</strong> đã học rất chăm chỉ!</p>
+            <div class="report-stats-row">
+              <div class="report-stat">
+                <span class="stat-num">5</span>
+                <span class="stat-label">bài đã giải</span>
+              </div>
+              <div class="report-stat">
+                <span class="stat-num">4</span>
+                <span class="stat-label">tự giải được</span>
+              </div>
+              <div class="report-stat">
+                <span class="stat-num">38 ph</span>
+                <span class="stat-label">thời gian học</span>
+              </div>
+            </div>
+            <div class="report-topics">
+              <div class="topic-tag">📈 Cực trị hàm số bậc 3 <span class="topic-count">×3</span></div>
+              <div class="topic-tag">📊 Đạo hàm cơ bản <span class="topic-count">×2</span></div>
+            </div>
+            <div class="report-note">
+              <span class="note-icon">💬</span>
+              <p>Con đã ứng dụng <strong>Bảng xét dấu</strong> và <strong>Đạo hàm cấp 2</strong> để tìm cực trị rất linh hoạt. Tư duy giải quyết vấn đề của con đang tiến bộ rõ rệt!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Yesterday -->
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-date">
+              <span class="date-badge">Hôm qua</span>
+              <span class="date-text">Chủ nhật, 04/05/2026</span>
+            </div>
+          </div>
+          <div class="report-body">
+            <p class="report-greeting">📚 Con đã ôn lại phần <strong>Lượng giác</strong> và <strong>Khảo sát hàm số</strong>.</p>
+            <div class="report-stats-row">
+              <div class="report-stat">
+                <span class="stat-num">4</span>
+                <span class="stat-label">bài đã giải</span>
+              </div>
+              <div class="report-stat">
+                <span class="stat-num">3</span>
+                <span class="stat-label">tự giải được</span>
+              </div>
+              <div class="report-stat">
+                <span class="stat-num">52 ph</span>
+                <span class="stat-label">thời gian học</span>
+              </div>
+            </div>
+            <div class="report-topics">
+              <div class="topic-tag">🔺 Lượng giác <span class="topic-count">×2</span></div>
+              <div class="topic-tag">📈 Hàm số bậc 3 <span class="topic-count">×2</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 days ago -->
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-date">
+              <span class="date-badge">Thứ 7</span>
+              <span class="date-text">03/05/2026</span>
+            </div>
+          </div>
+          <div class="report-body">
+            <p class="report-greeting">🎯 Con đã tập trung vào <strong>Tích phân</strong> — lần đầu học chủ đề này!</p>
+            <div class="report-stats-row">
+              <div class="report-stat">
+                <span class="stat-num">3</span>
+                <span class="stat-label">bài đã giải</span>
+              </div>
+              <div class="report-stat">
+                <span class="stat-num">2</span>
+                <span class="stat-label">tự giải được</span>
+              </div>
+              <div class="report-stat">
+                <span class="stat-num">40 ph</span>
+                <span class="stat-label">thời gian học</span>
+              </div>
+            </div>
+            <div class="report-topics">
+              <div class="topic-tag">📏 Tích phân cơ bản <span class="topic-count">×3</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Weekly summary + Strengths -->
+      <div class="insights-section">
+
+        <!-- Weekly Summary -->
+        <div class="insight-card weekly-card">
+          <div class="weekly-header">
+            <span class="weekly-icon">🏆</span>
+            <h3>Tổng kết tuần</h3>
+          </div>
+          <div class="weekly-body">
+            <p class="weekly-message">
+              🎉 <strong>Chúc mừng!</strong> Tuần này con Quang đã tiến bộ <strong class="highlight-green">+20%</strong> so với tuần trước!
+            </p>
+            <div class="weekly-highlights">
+              <div class="highlight-item">
+                <span class="hl-icon">📈</span>
+                <span>Giải được <strong>24 bài</strong> (tuần trước: 20 bài)</span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-icon">🧠</span>
+                <span>Tự giải tăng từ <strong>75% → 87%</strong></span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-icon">⭐</span>
+                <span>Chủ đề mới: <strong>Tích phân cơ bản</strong></span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-icon">🔥</span>
+                <span>Chuỗi <strong>7 ngày</strong> học liên tục!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strengths / Weaknesses -->
+        <div class="insight-card">
+          <h3 class="insight-title">📊 Phân tích chủ đề</h3>
+          <div class="topic-bars">
+            <div class="topic-bar-item">
+              <div class="topic-bar-header">
+                <span class="topic-name">Đạo hàm</span>
+                <span class="topic-pct">92%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill green" style="width: 92%"></div>
+              </div>
+              <span class="strength-label strong">💪 Rất tốt</span>
+            </div>
+            <div class="topic-bar-item">
+              <div class="topic-bar-header">
+                <span class="topic-name">Khảo sát hàm số (Cực trị)</span>
+                <span class="topic-pct">78%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 78%"></div>
+              </div>
+              <span class="strength-label good">👍 Khá tốt</span>
+            </div>
+            <div class="topic-bar-item">
+              <div class="topic-bar-header">
+                <span class="topic-name">Lượng giác</span>
+                <span class="topic-pct">65%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill amber" style="width: 65%"></div>
+              </div>
+              <span class="strength-label avg">📝 Cần ôn thêm</span>
+            </div>
+            <div class="topic-bar-item">
+              <div class="topic-bar-header">
+                <span class="topic-name">Tích phân</span>
+                <span class="topic-pct">45%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill red" style="width: 45%"></div>
+              </div>
+              <span class="strength-label weak">🌱 Mới bắt đầu</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hint Usage -->
+        <div class="insight-card">
+          <h3 class="insight-title">💡 Mức sử dụng gợi ý</h3>
+          <div class="hint-usage-grid">
+            <div class="hint-usage-item">
+              <div class="hint-circle green">68%</div>
+              <div class="hint-info">
+                <strong>Hint 1 là đủ</strong>
+                <span>Chỉ cần gợi ý nhẹ</span>
+              </div>
+            </div>
+            <div class="hint-usage-item">
+              <div class="hint-circle amber">19%</div>
+              <div class="hint-info">
+                <strong>Cần Hint 2</strong>
+                <span>Cần gợi ý chi tiết</span>
+              </div>
+            </div>
+            <div class="hint-usage-item">
+              <div class="hint-circle red">9%</div>
+              <div class="hint-info">
+                <strong>Cần Hint 3</strong>
+                <span>Cần gợi ý rất kỹ</span>
+              </div>
+            </div>
+            <div class="hint-usage-item">
+              <div class="hint-circle purple">4%</div>
+              <div class="hint-info">
+                <strong>Xem cách giải</strong>
+                <span>Cần xem tổng quát</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Profile dropdown toggle
+    const parentProfileBtn = document.getElementById('parentProfileBtn');
+    const parentDropdown = document.getElementById('parentProfileDropdown');
+    const parentArrow = document.getElementById('parentProfileArrow');
+
+    if (parentProfileBtn && parentDropdown) {
+      parentProfileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        parentDropdown.classList.toggle('show');
+        parentArrow.classList.toggle('open');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!parentDropdown.contains(e.target) && !parentProfileBtn.contains(e.target)) {
+          parentDropdown.classList.remove('show');
+          parentArrow.classList.remove('open');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

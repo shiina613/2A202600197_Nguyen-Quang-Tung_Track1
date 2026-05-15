@@ -1,0 +1,234 @@
+# 🧠 MathHint — Đánh giá sản phẩm từ góc nhìn Product Manager
+
+> **Bối cảnh:** MathHint là gia sư AI Toán THPT, sử dụng phương pháp Socratic (gợi ý từng bước, không đưa đáp án). User là **học sinh**, nhưng buyer là **phụ huynh**.
+
+---
+
+## 1. Điểm mạnh (Strengths)
+
+### ✅ Giải quyết đúng pain point thực sự
+- **Phụ huynh:** "Tôi không biết cách dạy con Toán lớp 12" — 80% phụ huynh Việt Nam không thể hỗ trợ con ở cấp THPT. Gia sư 1-1 tốn 200-500K/buổi.
+- **Học sinh:** "Tôi cần ai đó giải thích lại, nhưng ngại hỏi thầy/cô" — MathHint available 24/7, không phán xét.
+
+### ✅ Phương pháp Socratic là điểm khác biệt đúng đắn
+- Thị trường đang tràn ngập các app **cho đáp án** (Photomath, Mathway). MathHint đi ngược lại: **dạy cách nghĩ, không cho cách chép**.
+- Phụ huynh sẵn lòng trả tiền cho "dạy con tư duy" hơn là "cho con đáp án".
+- Đây là positioning rất mạnh: _"Gia sư dạy con cách câu cá, không phải cho con con cá."_
+
+### ✅ Dual-stakeholder model tạo moat (rào cản cạnh tranh)
+- Khi bạn phục vụ **cả hai bên** (học sinh dùng, phụ huynh giám sát), đối thủ cần xây dựng song song 2 trải nghiệm — đây là rào cản tự nhiên.
+- Báo cáo cho phụ huynh = **transparency** = **trust** = sẵn lòng trả tiền lâu dài.
+
+### ✅ Tận dụng đúng thời điểm AI
+- Chi phí LLM giảm mạnh (Gemini Flash Lite ~ $0.10/1M tokens) → margin cao.
+- Xã hội Việt Nam đang chấp nhận AI trong giáo dục nhanh chóng.
+
+---
+
+## 2. Điểm yếu (Weaknesses)
+
+### ⚠️ Xung đột lợi ích User vs. Buyer
+Đây là **rủi ro lớn nhất** của sản phẩm:
+
+| | Học sinh (User) muốn | Phụ huynh (Buyer) muốn |
+|:---|:---|:---|
+| **Mong muốn** | Giải bài nhanh, được đáp án | Con tự tư duy, không ỉ lại |
+| **Cảm nhận** | "App này khó chịu, không cho đáp án" | "App này tốt, dạy con tự lập" |
+| **Hành vi** | Có thể bỏ sang Photomath | Tiếp tục trả tiền |
+
+> [!CAUTION]
+> **Nếu học sinh ghét dùng → churn rate cao → phụ huynh thấy con không dùng → hủy subscription.**
+> 
+> Bạn phải làm cho học sinh **muốn dùng** MathHint, không chỉ **bị bắt dùng**.
+
+### ⚠️ Toán là vertical hẹp
+- Chỉ Toán THPT = thị trường hẹp (~3.5 triệu học sinh THPT Việt Nam, nhưng chỉ phần nhỏ sẵn lòng trả phí).
+- Nếu mở rộng sang Lý, Hóa, Anh → phức tạp hóa hệ thống RAG đáng kể.
+
+### ⚠️ Khó đo lường "hiệu quả thực sự"
+- Phụ huynh trả tiền nhưng hỏi: _"Điểm con tôi có tăng không?"_
+- MathHint khó chứng minh nhân quả trực tiếp: điểm tăng có thể do nhiều yếu tố.
+- **Rủi ro:** Phụ huynh kỳ vọng quá cao → thất vọng → churn.
+
+### ⚠️ AI hallucination trong Toán
+- LLM có thể tính sai, đặc biệt với bài phức tạp (tích phân, hình học không gian).
+- Một lần sai = mất niềm tin từ cả học sinh lẫn phụ huynh.
+- Cần hệ thống verification hoặc curated knowledge base rất chặt.
+
+---
+
+## 3. Tính khả thi (Feasibility)
+
+### 🟢 Khả thi cao về mặt kỹ thuật
+
+| Thành phần | Độ khó | Ghi chú |
+|:---|:---|:---|
+| Frontend (đã có) | ✅ Xong | HTML/CSS/JS, có thể migrate sang React sau |
+| LLM Integration | 🟡 Trung bình | Gemini 2.5 Flash Lite API, cần prompt engineering kỹ |
+| RAG System | 🟡 Trung bình | ChromaDB + curated math knowledge base |
+| Auth & User Management | 🟢 Dễ | Firebase Auth hoặc Supabase |
+| Parent Dashboard | ✅ Xong | Đã có giao diện, cần kết nối data thực |
+| Payment | 🟡 Trung bình | Momo, VNPay, hoặc Stripe cho VN |
+| **Tổng thời gian MVP** | **6-8 tuần** | 1 dev fullstack + prompt engineer |
+
+### 🟡 Khả thi trung bình về thị trường
+- **Willingness to pay:** Phụ huynh VN sẵn lòng trả 200-500K/tháng cho gia sư. MathHint ở 99-199K/tháng là hợp lý.
+- **Thách thức:** Thói quen "học miễn phí trên YouTube" rất mạnh ở VN.
+- **Cơ hội:** Chưa có đối thủ trực tiếp nào làm Socratic tutoring bằng tiếng Việt.
+
+---
+
+## 4. Kill Feature — Tính năng quyết định
+
+> [!IMPORTANT]
+> **Kill Feature = tính năng mà nếu không có, sản phẩm sẽ chết. Nếu có, sản phẩm khó bị thay thế.**
+
+### 🎯 Kill Feature: **"Báo cáo thông minh cho Phụ huynh"** (Parent Intelligence Report)
+
+Đây phải là tính năng **WOW phụ huynh ngay lần đầu**:
+
+```
+┌─────────────────────────────────────────────────┐
+│  📱 Thông báo Push lúc 21:00 mỗi tối:          │
+│                                                  │
+│  "Chào anh Quang! Hôm nay con Quang đã:        │
+│   ✅ Giải 5 bài Cực trị hàm số                  │
+│   ✅ Tự làm được 4/5 bài (chỉ cần 1 gợi ý)     │
+│   📈 Tiến bộ hơn hôm qua 20%                    │
+│   💡 Con đang chủ động thử cách mới (y'')       │
+│                                                  │
+│   → Con đang trên đà tốt! 🎉"                   │
+│                                                  │
+│  [Xem chi tiết]                                  │
+└─────────────────────────────────────────────────┘
+```
+
+**Tại sao đây là Kill Feature?**
+- Phụ huynh là **buyer** — họ cần **lý do tiếp tục trả tiền** mỗi tháng.
+- Không app nào ở VN đang làm điều này cho Toán.
+- Biến phụ huynh từ "không biết con học gì" → "biết chính xác con đang ở đâu" → **peace of mind** = sẵn lòng trả tiền.
+- Tạo **conversation topic** giữa phụ huynh và con: _"Con ơi, hôm nay con giải bài cực trị giỏi lắm!"_ → gia đình gắn kết hơn → cả hai bên đều happy.
+
+---
+
+## 5. Aha Moment — Khoảnh khắc "À, ra là thế!"
+
+> **Aha Moment** = khoảnh khắc user nhận ra giá trị cốt lõi của sản phẩm.
+
+### 👨‍🎓 Aha Moment cho Học sinh
+**"Mình tự giải được bài này rồi!"**
+
+Kịch bản:
+1. Học sinh gặp bài cực trị, không biết làm.
+2. Bot đưa Hint 1: _"Em nhớ lại, đại lượng nào đặc trưng cho biến thiên?"_
+3. Học sinh: _"À, đạo hàm!"_
+4. Bot đưa Hint 2: _"Đúng rồi! Cho y' = 0 xem ra x bằng mấy?"_
+5. Học sinh tự tính ra x = 0, x = 2.
+6. **Bot: "Chính xác! Em tự làm được rồi đó! 🎉"**
+
+→ Cảm giác **tự hào vì tự làm được** > cảm giác "có đáp án". Đây là hook giữ chân học sinh.
+
+> [!TIP]
+> **Metric đo Aha Moment:** Tỷ lệ học sinh hoàn thành bài chỉ với Hint 1-2 (không cần xem cách giải tổng quát) trong 3 phiên đầu tiên.
+>
+> **Target:** >50% bài trong 3 phiên đầu chỉ cần ≤2 hints.
+
+### 👨‍👩‍👦 Aha Moment cho Phụ huynh
+**"Ồ, tôi biết chính xác con mình đang yếu chỗ nào!"**
+
+Kịch bản:
+1. Phụ huynh mở app lần đầu sau khi con dùng 3 ngày.
+2. Thấy dashboard: _"Con giỏi Đạo hàm (92%), nhưng yếu Lượng giác (60%)"_
+3. Thấy insight: _"Con đã tự giải 87% bài, rất ít cần xem cách giải tổng quát"_
+4. **"Ồ, hóa ra con mình tự lập hơn mình nghĩ!"**
+
+→ **Peace of mind** + **pride** = sẵn lòng trả tiền tiếp.
+
+---
+
+## 6. Habit Moment — Tạo thói quen sử dụng
+
+> **Habit Moment** = trigger khiến user quay lại sản phẩm mà không cần nghĩ.
+
+### 📅 Habit Loop cho Học sinh
+
+```
+Trigger (Cue)     →  Routine            →  Reward
+─────────────────────────────────────────────────────
+Gặp bài khó       →  Mở MathHint hỏi   →  Tự giải được + cảm giác tự hào
+Buổi tối (20:00)   →  Làm 3 bài/ngày    →  Streak 🔥 tăng + badge mới
+Trước kiểm tra     →  Ôn tập trên app   →  Tự tin hơn khi vào phòng thi
+```
+
+**Cơ chế tạo habit:**
+
+| Cơ chế | Mô tả | Ưu tiên |
+|:---|:---|:---|
+| **🔥 Daily Streak** | "7 ngày học liên tục!" — mất streak = tiếc → quay lại | ⭐⭐⭐ Cao |
+| **🏆 Level System** | Mỗi chủ đề có level (Beginner → Master). Unlock badge. | ⭐⭐ Trung bình |
+| **📊 Progress Bar** | "Bạn đã master 60% chương Đạo hàm" — muốn lên 100% | ⭐⭐⭐ Cao |
+| **🎯 Daily Challenge** | Mỗi ngày 1 bài thử thách. Giải đúng = điểm bonus. | ⭐⭐ Trung bình |
+| **🤝 So sánh ẩn danh** | "Bạn giỏi hơn 73% học sinh cùng lớp" (opt-in) | ⭐ Thấp (cẩn thận pressure) |
+
+### 📅 Habit Loop cho Phụ huynh
+
+```
+Trigger (Cue)          →  Routine                →  Reward
+───────────────────────────────────────────────────────────────
+Push notification 21:00 →  Mở báo cáo hôm nay    →  An tâm, tự hào về con
+Cuối tuần (CN sáng)     →  Đọc weekly summary     →  Biết tuần này con tiến bộ
+Con nhắn "khó quá"      →  Mở app xem con đang    →  Hỗ trợ con đúng chỗ
+                           học gì                     (thay vì la mắng)
+```
+
+> [!IMPORTANT]
+> **Habit quan trọng nhất cho phụ huynh:** Push notification hàng tối.
+> 
+> Nếu phụ huynh **mở app ít nhất 1 lần/ngày** để đọc báo cáo → retention rate sẽ rất cao.
+> Không cần phụ huynh làm gì phức tạp — chỉ cần **đọc 30 giây** mỗi tối.
+
+---
+
+## 7. Rủi ro cần giải quyết trước khi launch
+
+| # | Rủi ro | Mức độ | Giải pháp |
+|:---|:---|:---|:---|
+| 1 | Học sinh bỏ sang Photomath vì "MathHint không cho đáp án" | 🔴 Cao | Gamification mạnh: streak, badge, level. Làm cho việc "tự giải" trở nên **vui** chứ không phải **khổ** |
+| 2 | AI tính sai → mất niềm tin | 🔴 Cao | Curated knowledge base (RAG chặt), có nút "Báo lỗi", human review cho các report |
+| 3 | Phụ huynh không thấy "hiệu quả" → hủy sub | 🟡 TB | Tạo metric "tiến bộ" rõ ràng (% tự giải tăng, số chủ đề master) + milestone celebration |
+| 4 | Chỉ dùng trước mùa thi → seasonality cao | 🟡 TB | Content quanh năm: ôn tập, pre-learning, skill building ngoài mùa thi |
+| 5 | Đối thủ lớn (Google, Duolingo Math) vào thị trường VN | 🟡 TB | First-mover advantage + localize sâu (chương trình VN, tiếng Việt native) |
+
+---
+
+## 8. Đề xuất Pricing Strategy
+
+> Buyer là phụ huynh → pricing phải **so sánh được với gia sư thật**.
+
+| Gói | Giá/tháng | Nội dung | Target |
+|:---|:---|:---|:---|
+| **Miễn phí** | 0đ | 3 bài/ngày, không có báo cáo phụ huynh | Dùng thử, hook học sinh |
+| **Cơ bản** | 99K | Unlimited bài, báo cáo hàng ngày cho PH | Gia đình quan tâm |
+| **Pro** | 199K | + Ôn thi chuyên sâu, báo cáo tuần chi tiết, so sánh tiến bộ | Chuẩn bị thi ĐH |
+| **Gia đình** | 299K | Tối đa 3 con, tất cả tính năng Pro | Gia đình nhiều con |
+
+> [!TIP]
+> **Anchoring:** Luôn so sánh với gia sư thật: _"Gia sư 1-1: 400K/buổi × 8 buổi = 3.2 triệu/tháng. MathHint Pro: 199K/tháng, học 24/7."_
+
+---
+
+## 9. Tổng kết — Go / No-Go
+
+| Tiêu chí | Đánh giá |
+|:---|:---|
+| **Problem-Solution Fit** | ✅ Mạnh — Pain point rõ ràng, giải pháp khác biệt |
+| **Market Size** | 🟡 Trung bình — Hẹp (chỉ Toán THPT), nhưng deep |
+| **Technical Feasibility** | ✅ Cao — Tech stack có sẵn, chi phí LLM thấp |
+| **Competitive Moat** | 🟡 Trung bình — Socratic + Parent report là differentiator, nhưng dễ bị copy |
+| **Monetization** | ✅ Rõ ràng — Subscription model, buyer (PH) có khả năng chi trả |
+| **Biggest Risk** | 🔴 User (HS) không muốn dùng vì "không cho đáp án" |
+
+### Verdict: **GO** 🚀 — với điều kiện:
+1. **Gamification phải là ưu tiên #1** để giữ chân học sinh
+2. **Parent report phải WOW** ngay lần đầu để convert buyer
+3. **AI accuracy phải gần 100%** cho toán THPT cơ bản — đừng cố làm toán Olympic

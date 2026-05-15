@@ -1,402 +1,162 @@
-# AI VC CRITIQUE LOG — MathHint
+# AI VC Critique Log — SmartHint AI
 
-**Date:** 2026-05-05  
-**Model:** Claude Sonnet 4.5  
-**Prompt:** Sequoia Partner critique (50 AI pitches/week)
-
----
-
-## PITCH GỐC (Trước critique)
-
-### Twitter Pitch (279 ký tự)
-
-MathHint là gia sư AI Toán THPT, phương pháp Socratic (gợi ý, không cho đáp án). 200K phụ huynh VN không dạy được con lớp 12. Gia sư 3.2tr/tháng. Pilot 50 HS: retention 68%, tự giải 87% bài, LTV/CAC 6.4x. Gọi 500M VND seed để scale 2,000 users trong 12 tháng.
-
-### Pitch Memo (6 sections)
-
-**1. Problem:** 200K phụ huynh VN không dạy được con Toán THPT. Gia sư 3.2tr/tháng, ngoài tầm với 70% gia đình.
-
-**2. Insight:** Phụ huynh không trả tiền cho "đáp án đúng" — họ trả tiền cho "con tự giải được". 87% PH nói "Tôi sợ con ỉ lại AI".
-
-**3. Solution:** MathHint — gia sư AI Socratic (gợi ý, không cho đáp án). Dual-stakeholder: HS dùng, PH giám sát. Anti-hallucination: SymPy verify.
-
-**4. Why Now:** Chi phí LLM giảm 90% (2023-2026). 73% PH VN đã dùng ChatGPT. Kỳ thi THPTQG 2026: 900K HS.
-
-**5. Traction:** Pilot 50 HS: retention 68%, tự giải 87%, LTV/CAC 6.4x, margin 65%.
-
-**6. Ask:** 500M VND seed → 2,000 users trong 12 tháng.
+Student: Nguyễn Quang Tùng - 2A202600197
+Date: 14/05/2026
+Audience: Seed VC
 
 ---
 
-## AI VC CRITIQUE (Full Feedback)
+## Pitch gốc (trước critique)
+
+### Pitch Memo gốc
+
+> **THE PROBLEM:** Mỗi năm, hơn 1,1 triệu học sinh lớp 12 Việt Nam thi tốt nghiệp THPT môn Toán — nhưng chỉ 12,23% đạt ≥7 điểm. Nhóm 353.000 em dải 5–7đ bế tắc hàng đêm ở Phần II/III của đề mới. Công cụ hiện có (QANDA, ChatGPT) chỉ giải hộ.
+>
+> **THE INSIGHT:** Đề Toán TN mới tạo khe sản phẩm: Phần III "trả lời ngắn" yêu cầu tự gõ số — solver không chuyển được vào phòng thi.
+>
+> **THE SOLUTION:** SmartHint AI dùng Dual-Scaffolding (Trắc nghiệm + Ép tự tính), align đề Bộ, verify bằng tool. Gemini Flash-Lite, gross margin ~73%.
+>
+> **WHY NOW:** Đề mới 2025+, Thông tư 29 siết dạy thêm, countdown 6/2026, API cost giảm 80%.
+>
+> **TRACTION:** Target 200 HS pilot, Session Completion >60%, ARPU 139K/tháng.
+>
+> **THE ASK:** 700M VNĐ pre-seed, 10K paid users / 12 tháng.
+
+### Twitter Pitch gốc
+
+> 353K học sinh lớp 12 VN dải 5–7đ bế tắc Phần III đề TN mới — solver chỉ giải hộ, không cứu được trong phòng thi. SmartHint AI: gia sư Socratic ép tự tính, verify bằng tool, align đề Bộ. Pilot 200 HS: target completion >60%. Gross margin 73%. Gọi 700M VNĐ seed, 10K paid users/12 tháng.
+
+---
+
+## AI VC Critique (Full feedback)
+
+**Prompt used:** AI VC Critique Prompt (Day 19 §4.1 — Sequoia Partner)
+
+---
 
 ### 1. THE 8-SECOND TEST
 
-**Question:** Did the first sentence earn me another 50 seconds? Why/why not?
+**AI VC feedback:**
 
-**AI Response:**
+> "353K học sinh lớp 12 VN dải 5–7đ bế tắc Phần III đề TN mới" — câu mở đầu earn 50 giây tiếp theo. Cụ thể, có số, có cohort rõ. Nhưng "353K" yêu cầu người nghe tính ngược — tốt hơn nên lead bằng insight: "Chỉ 12% đạt 7 điểm trở lên" gây sốc hơn vì nghe lạ. "353K" là derived number, "12%" là punchline. Đề nghị đổi thứ tự: lead bằng % trước, rồi scale bằng con số tuyệt đối.
+>
+> Điểm mạnh: Câu đầu không có jargon. Nói ngay về khách hàng, không nói về tech.
 
-**YES — but barely.**
+**Decision: Partial**
 
-The opening "200K phụ huynh VN không dạy được con lớp 12" is **specific** and **relatable** for a Vietnam-focused VC. The number is concrete, the pain is clear.
-
-**What works:**
-- ✅ Specific number (200K)
-- ✅ Clear pain point (phụ huynh không dạy được con)
-- ✅ Localized (VN market)
-
-**What could be stronger:**
-- ⚠️ "Gia sư 3.2tr/tháng" comes too late (second sentence). This is your **anchoring number** — should be in the first sentence.
-- ⚠️ Missing emotional hook. "Không dạy được" is factual but not visceral.
-
-**Suggested rewrite:**
-> "200K phụ huynh VN trả 3.2 triệu/tháng cho gia sư Toán THPT — nhưng 80% vẫn không thể giúp con khi con hỏi bài lúc 11 đêm."
-
-**Why better:**
-- Anchoring (3.2tr) ngay câu đầu
-- Emotional ("11 đêm" = relatable moment)
-- Still concrete (200K, 80%, 3.2tr)
-
-**Score:** 7/10 → Could be 9/10 with rewrite
+Lý do: AI đúng rằng "12%" gây sốc hơn — nhưng trong Twitter Pitch 280 ký tự, bắt đầu bằng "353K" + "Phần III" truyền tải cả scale lẫn specificity cùng lúc. Trong script đọc to, tôi đã lead bằng "chỉ 12% đạt 7 điểm trở lên" ở câu đầu tiên — vậy script spoken đã address feedback này. Giữ Twitter Pitch nguyên vì ràng buộc ký tự.
 
 ---
 
 ### 2. THE INSIGHT TEST
 
-**Question:** What is the ONE non-obvious insight? Is it actually non-obvious?
+**AI VC feedback:**
 
-**AI Response:**
+> Insight "solver không cứu được Phần III" — đây thực sự non-obvious với VC không hiểu giáo dục VN. Tuy nhiên, cần cẩn thận: "solver kém ở bài tự luận" không mới — đó là nhận xét chung cho mọi AI tutor. Phần sharp hơn là: **cấu trúc đề thi VN thay đổi vào 2025** tạo ra window. Vấn đề là window này có bền không? Nếu QANDA update format support cho Phần III (chỉ cần thêm input field), moat biến mất.
+>
+> Đề nghị sharpen: Nhấn mạnh QANDA/solver được optimize cho "answer-first" — **metric của họ là answer speed**, không phải "học sinh có tự làm được không". Pivot sang Socratic = đổi north star metric = đổi toàn bộ sản phẩm. Đó mới là insight thật.
 
-**Insight:** "Phụ huynh không trả tiền cho 'đáp án đúng' — họ trả tiền cho 'con tự giải được'."
+**Decision: Accept**
 
-**Is it non-obvious?** 🟡 **Partially.**
-
-**What's good:**
-- ✅ Goes against the grain (Photomath, Mathway đều cho đáp án)
-- ✅ Backed by data (87% PH nói "sợ con ỉ lại AI")
-- ✅ Explains why Socratic method is the right approach
-
-**What's weak:**
-- ⚠️ This is becoming **obvious** in 2026. Many edtech founders now say "we teach thinking, not answers."
-- ⚠️ The insight is **about parents**, but your **user is students**. What if students hate it?
-
-**The REAL insight (that you buried):**
-> "87% phụ huynh sợ con ỉ lại AI — nhưng học sinh pilot có retention 68% (vs industry 40%). Tại sao? Vì gamification (streak, badge) + cảm giác 'tự giải được' = dopamine hit mạnh hơn 'có đáp án'."
-
-**This is non-obvious because:**
-- Most people think: Socratic = slow = students hate it
-- You proved: Socratic + gamification = students LOVE it (68% retention)
-- This solves the **user-buyer conflict** — the hardest problem in dual-stakeholder products
-
-**Suggested rewrite:**
-> "Insight: Mọi người nghĩ Socratic tutoring = học sinh ghét (vì không cho đáp án). Nhưng pilot 50 HS: retention 68% (industry 40%) vì gamification + cảm giác 'tự giải được' = dopamine hit mạnh hơn. Phụ huynh trả tiền, học sinh muốn dùng — win-win."
-
-**Score:** 6/10 → Could be 9/10 if you reframe around user-buyer alignment
+Lý do: AI đúng. "Solver kém ở bài tự luận" ai cũng nói được. Insight sắc hơn là: **QANDA/ChatGPT optimize answer speed → pivot sang Socratic = cannibalize traffic/engagement hiện tại → xung đột tổ chức**. Đây mới là moat thực sự — không phải tech barrier, mà là **organizational inertia** của đối thủ. Đã sửa vào Pitch Memo section "THE INSIGHT" bản final.
 
 ---
 
 ### 3. THE OPENAI THREAT
 
-**Question:** "If OpenAI shipped this feature next week, what's your moat?"
+**AI VC feedback:**
 
-**AI Response:**
+> "Nếu Google/OpenAI ship Socratic Math Tutor cho thị trường VN tuần sau, bạn chết trong mấy tháng?"
+>
+> Moat hiện tại: (1) bank 18 đề Bộ + taxonomy Phần II/III, (2) UX tiếng Việt + empathetic tone cho cohort 5–7đ, (3) distribution D2C qua Threads + Zalo group ôn TN.
+>
+> Critique: (1) 18 đề Bộ là public — ai cũng scrape được trong 1 sprint. (2) UX tiếng Việt — Google Translate + local team mất 3 tháng. (3) Threads/Zalo distribution — zero switching cost cho user.
+>
+> Moat thật sự yếu. Cái bạn có là **cửa sổ thời gian 12–18 tháng** + **vòng lặp data "điểm kẹt"** mà big tech chưa thu thập vì chưa có sản phẩm Socratic ở VN. Nếu scale nhanh, data flywheel sẽ chạy trước khi đối thủ phản ứng. Nhưng nếu chậm, moat = 0.
 
-**Your answer:** "Data moat (curated VN curriculum) + Distribution moat (parent dashboard) + Trust moat (SymPy verification)"
+**Decision: Accept**
 
-**My pushback:**
-
-**1. Data moat — WEAK**
-- OpenAI can scrape Vietnamese textbooks in 1 week
-- "Curated by teachers" is not defensible — they can hire teachers too
-- **Counter:** How many hours of curation? How many teachers? What's the quality bar?
-
-**2. Distribution moat — MEDIUM**
-- Parent dashboard is a feature, not a moat
-- OpenAI can build this in 2 sprints
-- **Counter:** What's the network effect? Do parents share reports? Is there a community?
-
-**3. Trust moat — STRONG** ✅
-- SymPy verification is **technical depth** that OpenAI won't bother with
-- They optimize for generality, you optimize for accuracy in one vertical
-- This is defensible **if** you can prove 100% accuracy vs their 80-85%
-
-**The moat you DIDN'T mention (but should):**
-> "Dual-stakeholder lock-in: Khi phụ huynh đã theo dõi con 3 tháng (90 báo cáo), họ có **context history** không thể chuyển sang OpenAI. Switching cost = mất toàn bộ lịch sử tiến bộ của con."
-
-**This is a REAL moat because:**
-- Data accumulation over time
-- Emotional investment (phụ huynh đã "đồng hành" với con)
-- High switching cost (không phải về tiền, mà về context)
-
-**Suggested rewrite:**
-> "Moat: (1) SymPy verification = 100% accuracy (OpenAI 80-85%), (2) 90 ngày báo cáo = context history không thể chuyển, (3) Curated VN curriculum = 500 bài verified (OpenAI không có). Nếu OpenAI launch, chúng tôi pivot B2B (white-label cho trường học)."
-
-**Score:** 5/10 → Could be 8/10 if you emphasize data accumulation + switching cost
+Lý do: AI hoàn toàn đúng — và thực ra submission Day 16-17 đã acknowledge điều này ("moat không nằm ở 'họ không làm được' mà ở tốc độ vòng lặp VN"). Không tự lừa mình rằng có moat mạnh. Cái tôi có là **first-mover advantage trong ngách hẹp** + **data flywheel** nếu chạy trước. Đã cập nhật Pitch Memo: thay "moat" bằng ngôn ngữ "first-mover window + data flywheel". Thành thật hơn với VC.
 
 ---
 
 ### 4. THE NUMBERS TEST
 
-**Question:** Are the traction numbers defensible? What would you push back on?
+**AI VC feedback:**
 
-**AI Response:**
+> - "353K học sinh dải 5–7đ" — derived từ 31,4% của 1.126.172. Phổ điểm 2025 là hard data ✓. Nhưng TAM = tất cả 353K đều sẽ trả tiền? Conversion assumption?
+> - "Gross margin 73%" — cần breakdown: ARPU 139K, COGS gồm gì? API 37.2K/user/tháng ở 70 phút/ngày — power user dùng 120 phút/ngày thì margin sụt xuống bao nhiêu? Hidden costs (labeling, retraining, QA) đã tính chưa?
+> - "10K paid users / 12 tháng" — từ 200 pilot lên 10K = 50x trong 10 tháng. Growth rate tháng = ~47% MoM compounded. Realistic cho B2C VN early-stage? Cần so benchmark.
+> - "700M VNĐ" — chỉ ~$27K. Quá ít cho AI startup dù ở VN. Lương team 1 PM + 1 dev + 1 GV trong 6 tháng = đã hết runway. Cần giải thích rõ: founder bootstrap hay có nguồn khác?
 
-**Your numbers:**
-- Pilot 50 HS: retention 68%, tự giải 87%, LTV/CAC 6.4x, margin 65%
+**Decision: Partial**
 
-**My pushback:**
-
-**1. "Pilot 50 HS" — Sample size nhỏ**
-- ⚠️ 50 users is **too small** to extrapolate retention
-- ⚠️ Likely hand-picked (friends, family, early adopters)
-- ⚠️ Retention 68% D7 is impressive — but what's D30? D90?
-- **Question:** How did you recruit these 50? Paid ads or organic?
-
-**2. "Tự giải 87%" — Definition unclear**
-- ⚠️ What does "tự giải" mean? ≤2 hints? ≤3 hints?
-- ⚠️ Is this 87% of **all problems** or 87% of **problems they attempted**?
-- ⚠️ Selection bias: Did weak students churn early, leaving only strong students?
-- **Question:** What's the distribution? (30% weak, 50% avg, 20% strong)
-
-**3. "LTV/CAC 6.4x" — Assumptions unclear**
-- ✅ 6.4x is **excellent** (target >3x)
-- ⚠️ But LTV assumes **8 months retention** (from your economic.md). Is this validated or projected?
-- ⚠️ CAC 120K — how did you calculate? Paid ads or referral?
-- **Question:** What's the payback period? (You said 4.2 months — this is good)
-
-**4. "Margin 65%" — Cost structure unclear**
-- ✅ 65% is **strong** for SaaS (benchmark 70-80%)
-- ⚠️ But this assumes Gemini Flash Lite pricing stays stable
-- ⚠️ What if Gemini raises prices 2x? (You said margin drops to 27.4%)
-- **Question:** What's your fallback? (You have GPT-4o mini — good)
-
-**What I LIKE:**
-- ✅ You have **unit economics** (most seed-stage founders don't)
-- ✅ LTV/CAC 6.4x is **defensible** if assumptions hold
-- ✅ Margin 65% shows you understand cost structure
-
-**What I NEED to see:**
-- 📊 Cohort retention curve (D1, D7, D30, D90)
-- 📊 Distribution of "tự giải" by skill level (weak/avg/strong)
-- 📊 CAC breakdown (paid ads vs organic vs referral)
-- 📊 Sensitivity analysis (what if Gemini raises prices? what if retention drops to 50%?)
-
-**Suggested addition to pitch:**
-> "Pilot 50 HS (recruited via Facebook Ads, CAC 120K). Retention: D7 68%, D30 54%, D90 projected 40%. Tự giải 87%: 30% weak (≤3 hints), 50% avg (≤2 hints), 20% strong (≤1 hint). LTV 763K (8 months × 159K × 60% retention). Payback 4.2 months. Margin 65% (Gemini), fallback 48% (GPT-4o mini)."
-
-**Score:** 7/10 → Could be 9/10 with cohort data + sensitivity analysis
+Lý do:
+- **353K = TAM, không phải target paid users** — AI nhầm. SAM ~353K, SOM mục tiêu 3.000–10.000 paid users. Đã có trong Day 16 sizing nhưng Pitch Memo chưa nêu rõ — **cần bổ sung "SOM = 10K paid, conversion ~3%"** vào Pitch Memo final. → **Accept**.
+- **Gross margin 73%** — đã tính hidden costs ở Day 18 (hệ số 1.18 dự phòng + 30–40% hidden costs trên API). Power user concern hợp lý — nhưng pricing đã thiết kế theo **freemium giới hạn phiên** + overage nếu vượt trần → margin protected. → **Reject** (đã handle trong pricing model).
+- **47% MoM growth** — AI đúng, con số aggressive. Nhưng đây là **mùa ôn TN** — demand seasonal, không linear. Từ tháng 3–6/2026 là peak organic. Tuy nhiên, 10K vẫn là stretch target — nên note rõ: **base case 5K, stretch 10K**. → **Partial accept**.
+- **700M quá ít** — AI có point. Tuy nhiên, ở VN pre-seed có thể bootstrap thêm: founder dev, GV cộng tác part-time, WOZ manual trước. 700M đủ cho 6 tháng nếu lean. Nhưng nên ghi rõ **"700M pre-seed + founder contribution"** trong Ask. → **Partial accept**.
 
 ---
 
 ### 5. THE WEAKEST LINE
 
-**Question:** Quote the one sentence I would push back on hardest. Suggest a rewrite.
+**AI VC feedback:**
 
-**AI Response:**
+> Weakest line: **"Pilot 200 HS: target completion >60%."**
+>
+> Vấn đề: "target" = chưa có gì. Bạn đang pitch **hypothesis**, không phải **proof**. Mọi startup đều có target đẹp. VC muốn thấy: đã làm rồi, kết quả gì? Nếu chưa, nói thẳng: "Chưa pilot. Nhưng WOZ framework đã thiết kế. Sẵn sàng deploy trong 2 tuần." Honest > hopeful.
+>
+> Rewrite đề nghị: "WOZ pilot framework đã thiết kế cho 200 HS lớp 12 Hà Nội. Deploy trong 2 tuần. Hypothesis: Session Completion >60% + next-item correctness > baseline QANDA. Kill criterion: nếu <45%, pivot UX trước khi scale."
 
-**Weakest line:**
-> "Gọi 500M VND seed để scale từ 50 lên 2,000 users trong 12 tháng."
+**Decision: Accept**
 
-**Why this is weak:**
-1. ⚠️ **40x growth in 12 months** (50 → 2,000) is **aggressive** for a product with only 50 users
-2. ⚠️ You haven't proven **repeatable acquisition** yet (50 users could be hand-picked)
-3. ⚠️ **500M VND ($20K USD)** is a **small seed round** — why not bootstrap to 200-500 users first?
-4. ⚠️ Missing **milestones**: What happens at 500 users? 1,000 users? Why 2,000?
-
-**My questions:**
-- What's your CAC at scale? (You said 120K for pilot — will this hold?)
-- What's your acquisition channel? (Facebook Ads? Referral? SEO?)
-- What if you only reach 1,000 users? Is that still success?
-- Why do you need 500M VND? Can you get to 500 users with 200M VND?
-
-**Suggested rewrite:**
-> "Gọi 500M VND seed để validate repeatable acquisition (CAC <150K) và scale 50 → 500 users (Q1-Q2), sau đó 500 → 2,000 users (Q3-Q4). Milestone 1 (500 users, 6 tháng): Prove retention >60% + CAC <150K. Milestone 2 (2,000 users, 12 tháng): $360K ARR, raise Series A hoặc profitable bootstrap."
-
-**Why better:**
-- ✅ Breaks down into **2 milestones** (500 → 2,000)
-- ✅ Defines **success criteria** (retention >60%, CAC <150K)
-- ✅ Shows **optionality** (Series A or bootstrap)
-- ✅ De-risks the ask (prove 500 first, then scale to 2,000)
-
-**Alternative (if you want to be more conservative):**
-> "Gọi 500M VND seed để đạt 500 paid users trong 6 tháng (10x growth, CAC <150K). Nếu retention >60%, raise thêm 2-3B VND để scale 2,000-5,000 users. Nếu không, pivot B2B (white-label cho trường học)."
-
-**Score:** 4/10 → Could be 8/10 with milestone breakdown + de-risking
+Lý do: AI hoàn toàn đúng. "Target completion >60%" nghe like wishful thinking. VC tôn trọng founder nói thẳng "chưa có data, nhưng đây là plan và kill criterion". Đã sửa theo suggestion — nêu rõ WOZ plan + kill criterion 45%.
 
 ---
 
-## DECISION LOG (Accept / Reject / Partial)
+## Pitch final (đã sửa sau AI critique)
 
-### Critique 1: THE 8-SECOND TEST
+### Pitch Memo final — Các thay đổi key:
 
-**AI Feedback:** Rewrite opening to include "3.2tr" + emotional hook ("11 đêm")
+1. **THE INSIGHT** (sửa): Nhấn mạnh organizational inertia — QANDA/solver optimize answer speed, pivot Socratic = cannibalize engagement → xung đột sản phẩm, không chỉ "solver kém ở bài tự luận".
 
-**Decision:** ✅ **ACCEPT**
+2. **TRACTION** (sửa):
+   - Thay "target completion >60%" → "WOZ pilot framework đã thiết kế cho 200 HS lớp 12 Hà Nội. Deploy trong 2 tuần. Hypothesis: Session Completion >60%. Kill criterion: <45% → pivot UX."
+   - Thêm: "SOM = 3.000–10.000 paid users (conversion ~3–5% từ free). Base case 5.000, stretch 10.000."
 
-**Lý do:**
-- Anchoring (3.2tr) nên ở câu đầu — đúng
-- "11 đêm" tạo emotional connection — relatable
-- Vẫn giữ được concrete numbers
+3. **THE ASK** (sửa): "700M VNĐ pre-seed + founder technical contribution (dev)" — nêu rõ founder bootstrap phần dev.
 
-**Action:** Sửa Twitter Pitch + Pitch Memo opening
+4. **Differentiator** (sharpen): Thay "moat" → "first-mover window 12–18 tháng + data flywheel 'điểm kẹt' theo dạng Phần II/III".
 
----
+### Twitter Pitch final (274 ký tự — giữ nguyên)
 
-### Critique 2: THE INSIGHT TEST
+> 353K học sinh lớp 12 VN dải 5–7đ bế tắc Phần III đề TN mới — solver chỉ giải hộ, không cứu được trong phòng thi. SmartHint AI: gia sư Socratic ép tự tính, verify bằng tool, align đề Bộ. Pilot 200 HS: target completion >60%. Gross margin 73%. Gọi 700M VNĐ seed, 10K paid users/12 tháng.
 
-**AI Feedback:** Reframe insight around "user-buyer alignment" (học sinh muốn dùng + phụ huynh trả tiền)
+Lý do giữ nguyên: Trong 280 ký tự, không đủ chỗ cho nuance "kill criterion" hay "organizational inertia". Pitch Memo (1-pager) đã cover. Twitter Pitch cần **hook + scale + ask** — hiện đã đủ.
 
-**Decision:** ✅ **ACCEPT**
+### Script đọc to final (~55 giây)
 
-**Lý do:**
-- Đây là insight **thực sự non-obvious**
-- Giải quyết được câu hỏi lớn nhất: "Học sinh có ghét Socratic không?"
-- Retention 68% là proof mạnh
+Mỗi năm hơn một triệu học sinh Việt Nam thi tốt nghiệp Toán — nhưng chỉ 12% đạt 7 điểm trở lên.
 
-**Action:** Rewrite Insight section:
-> "Insight: Mọi người nghĩ Socratic = học sinh ghét (không cho đáp án). Nhưng pilot 50 HS: retention 68% (industry 40%) vì gamification + 'tự giải được' = dopamine hit mạnh hơn. Phụ huynh trả tiền, học sinh muốn dùng — win-win."
+353 ngàn em dải 5–7 điểm — nhóm đông nhất — bế tắc mỗi đêm ở Phần II và Phần III đề mới. Ứng dụng giải toán như QANDA chỉ đưa đáp án — nhưng Phần III yêu cầu tự gõ số. Và đây là điều quan trọng: QANDA được tối ưu cho answer speed — pivot sang Socratic đồng nghĩa **cannibalize** chính traffic và engagement của họ. Họ sẽ không làm điều đó.
 
----
+SmartHint AI là gia sư Socratic, dùng Dual-Scaffolding — trắc nghiệm gợi hướng, rồi ép tự tính. Mọi kết quả kiểm bằng tool tính toán thật. Nội dung align trực tiếp 18 đề tham khảo Bộ Giáo dục.
 
-### Critique 3: THE OPENAI THREAT
+Chi phí API 37 ngàn đồng trên user trên tháng. Giá bán 139 ngàn. Gross margin 73%.
 
-**AI Feedback:** Emphasize "data accumulation + switching cost" thay vì "curated curriculum"
+WOZ pilot 200 học sinh Hà Nội deploy trong 2 tuần. Kill criterion: completion dưới 45% thì pivot UX trước khi scale.
 
-**Decision:** 🟡 **PARTIAL ACCEPT**
-
-**Lý do:**
-- ✅ "Data accumulation" (90 báo cáo) là moat thực sự — ACCEPT
-- ✅ "Switching cost" (context history) là moat mạnh — ACCEPT
-- ❌ "Curated curriculum is weak" — REJECT vì:
-  - 500 bài verified by teachers = 500+ hours work
-  - OpenAI không có incentive làm điều này (too niche)
-  - Đây là **depth** vs OpenAI's **breadth**
-
-**Action:** Rewrite Moat section:
-> "Moat: (1) SymPy verification = 100% accuracy (OpenAI 80-85%), (2) 90 ngày báo cáo = context history không thể chuyển (switching cost cao), (3) 500 bài curated VN curriculum = 500+ hours work (OpenAI không có incentive làm). Nếu OpenAI launch, pivot B2B white-label."
+Bọn em cần 700 triệu đồng pre-seed. Mục tiêu: 5 đến 10 ngàn paid users trong 12 tháng.
 
 ---
 
-### Critique 4: THE NUMBERS TEST
+## Self-Evaluation Rubric (7 mục)
 
-**AI Feedback:** Cần cohort data (D1/D7/D30/D90) + sensitivity analysis
-
-**Decision:** ✅ **ACCEPT**
-
-**Lý do:**
-- Đúng — 50 users là sample size nhỏ
-- Cần breakdown retention curve
-- Cần sensitivity analysis (what if Gemini tăng giá, retention giảm)
-
-**Action:** Thêm vào Traction section:
-> "Pilot 50 HS (Facebook Ads, CAC 120K): Retention D7 68%, D30 54%, D90 projected 40%. Tự giải 87%: 30% weak (≤3 hints), 50% avg (≤2 hints), 20% strong (≤1 hint). LTV 763K (8 months × 159K × 60%). Payback 4.2 months. Margin 65% (Gemini), fallback 48% (GPT-4o mini)."
-
-**Note:** D90 là projected vì pilot mới chạy 2 tháng. Cần validate thêm.
-
----
-
-### Critique 5: THE WEAKEST LINE
-
-**AI Feedback:** "50 → 2,000 users trong 12 tháng" quá aggressive. Cần milestone breakdown.
-
-**Decision:** ✅ **ACCEPT**
-
-**Lý do:**
-- 40x growth trong 12 tháng là aggressive với 50 users pilot
-- Cần prove repeatable acquisition trước
-- Milestone breakdown giúp de-risk
-
-**Action:** Rewrite Ask section:
-> "Gọi 500M VND seed để validate repeatable acquisition và scale theo 2 milestones:
-> - **Milestone 1 (6 tháng):** 50 → 500 users. Prove retention >60% + CAC <150K.
-> - **Milestone 2 (12 tháng):** 500 → 2,000 users. $360K ARR, raise Series A hoặc profitable bootstrap.
-> 
-> Nếu Milestone 1 fail, pivot B2B (white-label cho trường học)."
-
----
-
-## PITCH FINAL (Sau khi sửa)
-
-### Twitter Pitch (Revised)
-
-200K phụ huynh VN trả 3.2tr/tháng gia sư Toán THPT — nhưng 80% vẫn không giúp được con lúc 11 đêm. MathHint: gia sư AI Socratic (gợi ý, không đáp án). Pilot 50 HS: retention 68% (industry 40%), LTV/CAC 6.4x. Gọi 500M VND seed: 50→500 users (6 tháng), 500→2,000 (12 tháng).
-
-**Character count:** 278 ký tự ✅
-
----
-
-### Key Changes Summary
-
-| Section | Before | After | Why |
-|:---|:---|:---|:---|
-| **Hook** | "200K PH không dạy được con" | "200K PH trả 3.2tr — nhưng không giúp được con lúc 11 đêm" | Anchoring + emotional |
-| **Insight** | "PH trả tiền cho 'con tự giải'" | "Retention 68% (industry 40%) vì gamification + dopamine hit" | User-buyer alignment |
-| **Moat** | "Curated curriculum" | "90 ngày báo cáo = switching cost cao" | Data accumulation |
-| **Numbers** | "Retention 68%" | "Retention D7 68%, D30 54%, D90 40%" | Cohort breakdown |
-| **Ask** | "50 → 2,000 trong 12 tháng" | "Milestone 1: 50→500 (6 tháng), Milestone 2: 500→2,000 (12 tháng)" | De-risk + milestones |
-
----
-
-## SELF-EVALUATION (7 mục)
-
-- [x] **Mở đầu trong 8 giây gây được sự chú ý**
-  - ✅ "3.2tr/tháng" + "11 đêm" = anchoring + emotional
-  
-- [x] **Có 1 insight phản trực giác**
-  - ✅ "Retention 68% (industry 40%)" = Socratic + gamification work
-  
-- [x] **Có 2+ con số cụ thể chứng minh**
-  - ✅ Retention 68%, LTV/CAC 6.4x, margin 65%, D30 54%
-  
-- [x] **Differentiator rõ**
-  - ✅ Socratic + Dual-stakeholder + SymPy verification
-  
-- [x] **Ask cụ thể**
-  - ✅ 500M VND, Milestone 1 (500 users, 6 tháng), Milestone 2 (2,000 users, 12 tháng)
-  
-- [x] **Đọc to dưới 60 giây**
-  - ✅ 58 giây (tested)
-  
-- [x] **Match audience Seed VC**
-  - ✅ Vision (TAM $860M) + Early traction (50 users, retention 68%)
-
-**Final Score:** ✅ **PASS** — Ready to pitch with revisions!
-
----
-
-## LESSONS LEARNED
-
-### 1. Hook phải có Anchoring + Emotional
-- Số liệu (3.2tr) + moment cụ thể (11 đêm) > chỉ có số liệu
-- "Không dạy được" (factual) < "Không giúp được con lúc 11 đêm" (emotional)
-
-### 2. Insight phải giải quyết câu hỏi lớn nhất
-- Câu hỏi lớn nhất: "Học sinh có ghét Socratic không?"
-- Insight tốt: "Retention 68% (industry 40%) = học sinh muốn dùng"
-- Insight yếu: "Phụ huynh muốn con tự lập" (obvious)
-
-### 3. Moat = Data accumulation > Feature
-- "Parent dashboard" là feature (dễ copy)
-- "90 ngày báo cáo = context history" là moat (khó chuyển)
-- Switching cost về **emotional investment**, không chỉ về tiền
-
-### 4. Numbers cần Cohort breakdown
-- "Retention 68%" (vague) < "D7 68%, D30 54%, D90 40%" (specific)
-- Sample size 50 là nhỏ — cần acknowledge + plan to validate
-
-### 5. Ask cần Milestone breakdown
-- "50 → 2,000 trong 12 tháng" (aggressive) < "50→500 (6 tháng), 500→2,000 (12 tháng)" (de-risked)
-- Milestone = success criteria + optionality (Series A or bootstrap)
-
----
-
-## NEXT STEPS
-
-1. ✅ Update Pitch Memo với revisions
-2. ✅ Update Twitter Pitch với revisions
-3. ⏳ Validate D30, D90 retention với pilot users
-4. ⏳ Run sensitivity analysis (Gemini tăng giá, retention giảm)
-5. ⏳ Prepare cohort retention curve (visual) cho pitch deck
-6. ⏳ Test pitch với 3-5 advisors trước khi gửi VC
-
-**Status:** Ready to pitch — với caveat là cần validate D90 retention trong 1-2 tháng tới.
+- [x] **Mở đầu trong 8 giây gây sự chú ý** — "Chỉ 12% đạt 7 điểm" = số + insight phản trực giác
+- [x] **Có ít nhất 1 insight phản trực giác** — "QANDA optimize answer speed → pivot Socratic = cannibalize engagement → xung đột tổ chức" — không phải câu chung mọi founder nói
+- [x] **Có ít nhất 2 con số cụ thể** — 353K, 12.23%, 139K, 73%, 37.2K, 700M, 10K
+- [x] **Differentiator rõ** — "ép tự tính + verify bằng tool + align đề Bộ" + organizational inertia moat
+- [x] **Ask cụ thể** — 700M VNĐ pre-seed, 10K paid / 12 tháng
+- [x] **Đọc to dưới 60 giây** — ước ~55 giây
+- [x] **Match đúng audience Seed VC** — vision (khe sản phẩm + cohort lặp hằng năm) + early signals (pilot plan, WOZ) + founder-market fit

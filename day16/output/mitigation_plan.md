@@ -1,0 +1,7 @@
+## Kế hoạch Bọc lót Lỗ hổng (Dành cho Founder tự điền)
+
+| Lỗ hổng bị Agent vạch trần | Chiến lược phòng thủ (Mitigation) | Rủi ro còn lại |
+|---|---|---|
+| Bị QANDA/Photomath/ChatGPT clone tính năng "Tutor Mode" | Thiết kế Persona "Gia sư đồng cảm" (Empathetic Mentor) với cá tính độc bản thay vì một AI lạnh lùng. ChatGPT có thể clone logic Socratic, nhưng rất khó clone được "linh hồn" và cảm giác gần gũi của một UI/UX được may đo riêng cho học sinh Việt Nam. | Big Tech vẫn có thể update prompt để AI của họ nói chuyện "người" hơn, đòi hỏi MathHint phải liên tục update content/easter egg. |
+| Đứa trẻ nắm quyền xoá app nếu thấy app "không chịu cho đáp án nhanh" | Áp dụng UI/UX Tâm lý học & Easter Egg (Instant Gratification): Khen ngợi ngay lập tức khi học sinh vượt qua điểm kẹt ("Đoạn này lừa được khá nhiều bạn, em sắc bén đấy!"). Biến việc "tự giải" thành một chiến thắng tâm lý có phần thưởng cảm xúc ngay tại trận, tạo dopamine ngay lập tức. | Cần team UX Copywriting cực giỏi để không bị "giả trân". Nếu khen sai lúc, học sinh sẽ thấy lố bịch. |
+| Chi phí thu hút 1 user (CAC) cực đắt vì bán sự "mệt mỏi" cho học sinh | Biến sự "vất vả" thành "sự tự hào" (Flexing). Cho phép học sinh share những câu khen ngợi độc lạ của AI lên Story (VD: "Chỉ 1 hint đã giải xong bài này"). Dùng chính sự tự hào đó làm động lực viral (Word of Mouth) để hack CAC. | Chưa rõ tỉ lệ học sinh chịu share lên mạng xã hội là bao nhiêu. Cần test lúc ra MVP. |

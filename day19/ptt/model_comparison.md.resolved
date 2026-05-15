@@ -1,0 +1,112 @@
+# So sánh GPT-4o Mini vs Gemini 2.5 Flash Lite cho MathHint
+
+## Yêu cầu đặc thù của dự án MathHint
+
+| Yêu cầu | Mô tả |
+|:---|:---|
+| **Ngôn ngữ** | Tiếng Việt 100% |
+| **Toán THPT** | Đạo hàm, cực trị, tích phân, lượng giác — **không phải** Olympic |
+| **Phong cách** | Socratic (gợi ý từng bước, KHÔNG đưa đáp án) |
+| **RAG** | Truy vấn kho kiến thức toán → cần context window lớn |
+| **Memory** | Nhớ lịch sử phương pháp đã dùng qua các phiên |
+| **Volume** | Nhiều học sinh cùng lúc → cần chi phí thấp, latency thấp |
+
+---
+
+## Bảng so sánh tổng quan
+
+| Tiêu chí | GPT-4o Mini | Gemini 2.5 Flash Lite | **Phù hợp hơn** |
+|:---|:---|:---|:---|
+| **Giá Input** | $0.15 / 1M tokens | $0.10 / 1M tokens | ✅ Gemini |
+| **Giá Output** | $0.60 / 1M tokens | $0.40 / 1M tokens | ✅ Gemini |
+| **Context Window** | 128K tokens | **1M tokens** | ✅ Gemini |
+| **Latency** | Nhanh | Nhanh (tối ưu hơn cho high-volume) | ≈ Ngang |
+| **Toán THPT** | Tốt | Tốt (có "Thinking" mode) | ≈ Ngang |
+| **Tiếng Việt** | Tốt | Tốt (native multilingual) | ≈ Ngang |
+| **Structured Output** | Hỗ trợ tốt (JSON mode) | Hỗ trợ tốt | ≈ Ngang |
+| **Free Tier cho dev** | Có (giới hạn) | Có (giới hạn) | ≈ Ngang |
+| **Năm phát hành** | 07/2024 | 07/2025 | ✅ Gemini (mới hơn) |
+
+---
+
+## Phân tích chi tiết theo yêu cầu MathHint
+
+### 1. 📐 Khả năng Toán THPT
+Cả hai đều xử lý tốt toán THPT (đạo hàm, cực trị, phương trình bậc 2, tích phân cơ bản). Đây **không phải** toán Olympic, nên cả hai model "Lite" đều đủ sức.
+
+> [!TIP]
+> Gemini 2.5 Flash Lite có thêm tính năng **"Thinking Budget"** — cho phép cấu hình mức độ "suy nghĩ" trước khi trả lời. Rất hữu ích khi cần bot tự phân tích bài toán trước khi đưa gợi ý Socratic.
+
+### 2. 🇻🇳 Tiếng Việt
+Cả hai đều hỗ trợ tốt tiếng Việt. Tuy nhiên, GPT-4o Mini đã được cộng đồng Việt Nam sử dụng rộng rãi hơn, nên có nhiều tài liệu/chia sẻ kinh nghiệm prompt engineering bằng tiếng Việt hơn.
+
+### 3. 📚 RAG (Context Window)
+Đây là **điểm khác biệt lớn nhất**:
+- GPT-4o Mini: **128K tokens** — đủ cho 1 phiên chat + vài tài liệu RAG nhỏ
+- Gemini 2.5 Flash Lite: **1M tokens** — có thể nhồi **toàn bộ kho kiến thức toán THPT** vào context trong 1 lần gọi API
+
+> [!IMPORTANT]
+> Với dự án MathHint, bạn cần truyền vào context:
+> - Khái niệm toán học (definitions)
+> - Cách giải tổng quát (methods)
+> - Bài tập ví dụ + lời giải (examples)
+> - Lịch sử phiên chat của học sinh (session history)
+>
+> **1M tokens** cho phép bạn truyền tất cả mà không cần lo tràn context. Với 128K, bạn sẽ phải **chọn lọc kỹ** những gì đưa vào.
+
+### 4. 💰 Chi phí vận hành
+Giả sử 1 phiên chat trung bình:
+- **Input**: ~2,000 tokens (prompt + RAG context + history)
+- **Output**: ~500 tokens (phản hồi bot)
+
+| Scenario | GPT-4o Mini | Gemini 2.5 Flash Lite |
+|:---|:---|:---|
+| 1 phiên chat | $0.0006 | $0.0004 |
+| 100 học sinh × 5 phiên/ngày | $0.30/ngày | $0.20/ngày |
+| 1 tháng (30 ngày) | **$9.00** | **$6.00** |
+
+> [!NOTE]   
+> Gemini tiết kiệm khoảng **33%** chi phí so với GPT-4o Mini cho cùng lượng sử dụng.
+
+### 5. 🧠 Socratic Method (System Prompt)
+Cả hai đều tuân thủ tốt system prompt phức tạp. Tuy nhiên, Gemini 2.5 Flash Lite với "Thinking" mode có thể tự lập kế hoạch trước khi phản hồi, giúp câu trả lời Socratic tự nhiên hơn.
+
+---
+
+## 🏆 Kết luận & Khuyến nghị
+
+### ✅ **Gemini 2.5 Flash Lite** là lựa chọn phù hợp hơn cho MathHint
+
+**Lý do chính:**
+
+1. **Context window 1M tokens** — Cho phép nhồi toàn bộ kho kiến thức RAG + lịch sử chat mà không cần cắt xén. Đây là lợi thế quyết định cho một ứng dụng gia sư cần nhớ lịch sử dài.
+
+2. **Chi phí thấp hơn 33%** — Quan trọng khi scale lên nhiều học sinh. $0.10/$0.40 vs $0.15/$0.60 per 1M tokens.
+
+3. **Thinking mode** — Tính năng "thinking budget" giúp bot có thể tự suy nghĩ trước khi đưa gợi ý, rất phù hợp với phương pháp Socratic.
+
+4. **Mới hơn (07/2025 vs 07/2024)** — Được huấn luyện với dữ liệu cập nhật hơn.
+
+### ⚠️ Khi nào nên chọn GPT-4o Mini?
+
+- Nếu bạn đã có sẵn hệ thống OpenAI API và không muốn migrate
+- Nếu bạn cần hệ sinh thái plugin/tool của OpenAI (Assistants API, File Search, v.v.)
+- Nếu bạn muốn tận dụng cộng đồng Việt Nam đông đảo hơn cho việc troubleshoot
+
+### 💡 Gợi ý kiến trúc tối ưu
+
+```
+┌─────────────┐     ┌──────────────────┐     ┌─────────────┐
+│  Frontend   │────▶│  Backend (API)   │────▶│  Gemini 2.5  │
+│  (MathHint) │     │  FastAPI/Node    │     │  Flash Lite  │
+└─────────────┘     │                  │     └─────────────┘
+                    │  ┌────────────┐  │
+                    │  │ ChromaDB   │  │     (RAG: Khái niệm,
+                    │  │ (Vector DB)│  │      Cách giải, Ví dụ)
+                    │  └────────────┘  │
+                    │  ┌────────────┐  │
+                    │  │ PostgreSQL │  │     (User sessions,
+                    │  │ (User DB)  │  │      History, Metrics)
+                    │  └────────────┘  │
+                    └──────────────────┘
+```
