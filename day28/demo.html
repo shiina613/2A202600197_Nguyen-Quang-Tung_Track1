@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lab Copilot Demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-primary: #313338;
+            --bg-secondary: #2b2d31;
+            --bg-tertiary: #1e1f22;
+            --text-normal: #dbdee1;
+            --text-muted: #949ba4;
+            --accent-color: #5865F2;
+            --danger-color: #da373c;
+            --success-color: #23a559;
+            --warning-color: #f1c40f;
+            --message-hover: #2e3035;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-normal);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Sidebar - Server List */
+        .servers {
+            width: 72px;
+            background-color: var(--bg-tertiary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 12px;
+            gap: 8px;
+        }
+
+        .server-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-normal);
+            font-weight: 600;
+        }
+
+        .server-icon:hover, .server-icon.active {
+            border-radius: 16px;
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Sidebar - Channels */
+        .channels {
+            width: 240px;
+            background-color: var(--bg-secondary);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .channels-header {
+            height: 48px;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            font-weight: 600;
+        }
+
+        .channel-list {
+            padding: 8px;
+            flex: 1;
+        }
+
+        .channel-item {
+            padding: 6px 8px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .channel-item:hover {
+            background-color: rgba(78, 80, 88, 0.3);
+            color: var(--text-normal);
+        }
+
+        .channel-item.active {
+            background-color: rgba(78, 80, 88, 0.6);
+            color: white;
+        }
+
+        .avatar-small {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #9b59b6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Chat Area */
+        .chat {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-primary);
+        }
+
+        .chat-header {
+            height: 48px;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 16px 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .message {
+            display: flex;
+            padding: 4px 16px;
+            gap: 16px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .message:hover {
+            background-color: var(--message-hover);
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #5865F2;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .message-content {
+            flex: 1;
+        }
+
+        .message-header {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .username {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .username.bot {
+            color: var(--accent-color);
+        }
+
+        .bot-tag {
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .timestamp {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .text {
+            font-size: 15px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        /* Attachment UI */
+        .attachment {
+            margin-top: 8px;
+            background-color: var(--bg-secondary);
+            border: 1px solid #3f4147;
+            border-radius: 8px;
+            padding: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 400px;
+            transition: all 0.2s ease;
+        }
+
+        .attachment:hover {
+            background-color: #35373c;
+            border-color: #4f5159;
+            cursor: pointer;
+        }
+
+        .file-icon {
+            font-size: 24px;
+        }
+
+        .file-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .file-name {
+            font-weight: 500;
+            color: #00a8fc;
+        }
+
+        .file-size {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Embed UI */
+        .embed {
+            margin-top: 8px;
+            background-color: var(--bg-secondary);
+            border-left: 4px solid var(--warning-color);
+            border-radius: 4px;
+            padding: 12px 16px;
+            max-width: 520px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .embed-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--warning-color);
+        }
+
+        .embed-field {
+            margin-top: 4px;
+        }
+
+        .embed-field-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .embed-field-value {
+            font-size: 14px;
+            color: var(--text-normal);
+        }
+
+        .text-danger { color: var(--danger-color); }
+        .text-success { color: var(--success-color); }
+
+        /* Typing indicator */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 16px;
+            margin-top: -8px;
+            margin-bottom: 8px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--text-muted);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        /* Chat Input */
+        .chat-input-container {
+            padding: 0 16px 24px;
+        }
+
+        .chat-input {
+            background-color: #383a40;
+            border-radius: 8px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .input-box {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-normal);
+            font-size: 15px;
+            outline: none;
+        }
+
+        .plus-btn {
+            width: 24px;
+            height: 24px;
+            background-color: var(--text-muted);
+            border-radius: 50%;
+            color: #383a40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Hide elements for animation sequence */
+        .hide { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Servers -->
+    <div class="servers">
+        <div class="server-icon" style="background-color: #5865F2; color: white;">AI</div>
+        <div class="server-icon" style="border-radius: 16px; background-color: #2b2d31;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--text-normal)"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"/></svg>
+        </div>
+    </div>
+
+    <!-- Sidebar Channels -->
+    <div class="channels">
+        <div class="channels-header">
+            Direct Messages
+        </div>
+        <div class="channel-list">
+            <div class="channel-item active">
+                <div class="avatar-small">AI</div>
+                <span>AI Copilot Bot</span>
+            </div>
+            <div class="channel-item">
+                <div class="avatar-small" style="background: #3498db;">C</div>
+                <span>Lab Coach</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat Area -->
+    <div class="chat">
+        <div class="chat-header">
+            <span style="font-size: 20px; color: var(--text-muted);">@</span>
+            <span>AI Copilot Bot</span>
+            <span class="bot-tag">BOT</span>
+        </div>
+
+        <div class="chat-messages" id="messages-container">
+            <!-- Message 1 (Student) -->
+            <div class="message">
+                <div class="message-avatar" style="background-color: #e67e22;">HV</div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="username">Học viên G01</span>
+                        <span class="timestamp">Hôm nay lúc 14:30</span>
+                    </div>
+                    <div class="text">Nhờ AI Copilot check giúp nhóm mình bài nháp Day 28 trước khi nộp lên LMS nhé!</div>
+                    <div class="attachment">
+                        <div class="file-icon">📄</div>
+                        <div class="file-details">
+                            <span class="file-name">Day28_Group01_Draft.pdf</span>
+                            <span class="file-size">1.2 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Typing Indicator (Animated) -->
+            <div class="typing-indicator" id="typing">
+                <div class="message-avatar" style="width: 24px; height: 24px; font-size: 10px;">AI</div>
+                <span style="font-size: 12px; color: var(--text-muted); font-weight: 500; margin-left: 4px;">AI Copilot Bot đang gõ</span>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <!-- Message 2 (Bot Response) -->
+            <div class="message hide" id="bot-response">
+                <div class="message-avatar">AI</div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="username bot">AI Copilot Bot</span>
+                        <span class="bot-tag">BOT</span>
+                        <span class="timestamp">Hôm nay lúc 14:31</span>
+                    </div>
+                    <div class="text">Đã phân tích bản nháp `Day28_Group01_Draft.pdf`. Dưới đây là kết quả tiền kiểm (formative) theo Rubric D28:</div>
+                    
+                    <div class="embed">
+                        <div class="embed-title">📊 Báo Cáo Rà Soát Nhanh (Pre-check)</div>
+                        <div class="text" style="margin-bottom: 8px;">Trạng thái: <strong class="text-danger">Thiếu thông tin quan trọng. Chưa nên nộp!</strong></div>
+                        
+                        <div class="embed-field">
+                            <div class="embed-field-name"><span class="text-success">✅</span> Gate 1 & 2: Tách vấn đề & Quick Win</div>
+                            <div class="embed-field-value">Rất tốt. Đã xác định rõ Use case "#4 Tiền kiểm rubric".</div>
+                        </div>
+
+                        <div class="embed-field">
+                            <div class="embed-field-name"><span class="text-success">✅</span> Gate 4: Bản vẽ trực quan</div>
+                            <div class="embed-field-value">Đã có Sequence Diagram cho bot Discord. Rất trực quan.</div>
+                        </div>
+
+                        <div class="embed-field">
+                            <div class="embed-field-name"><span class="text-danger">❌</span> Gate 5: Pilot Plan (Budget)</div>
+                            <div class="embed-field-value">Nhóm chỉ ghi "Chi phí API rẻ". Vui lòng lập ngân sách tách bạch (Ví dụ: Chi phí API ước tính là bao nhiêu USD? Phí server là bao nhiêu?).</div>
+                        </div>
+
+                        <div class="embed-field">
+                            <div class="embed-field-name"><span class="text-danger">❌</span> Gate 5: Pilot Plan (Exit Criteria)</div>
+                            <div class="embed-field-value">Bạn ghi "Dừng khi bot bị lỗi". Điều kiện này chưa đủ mạnh và chưa rõ ai có quyền ấn nút dừng. (Gợi ý: Cần 2 mức cảnh báo).</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text" style="margin-top: 8px; font-size: 13px; color: var(--text-muted);">
+                        💡 <em>Hint: Hãy bổ sung phần Budget chi tiết và làm rõ 2 mức Exit Criteria trước khi nộp bản Final cho Coach nhé.</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-container">
+            <div class="chat-input">
+                <div class="plus-btn">+</div>
+                <input type="text" class="input-box" placeholder="Nhắn gửi tới @AI Copilot Bot" disabled>
+                <div style="color: var(--text-muted); cursor: not-allowed;">🎁 📄 😁</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation logic to simulate bot thinking
+        setTimeout(() => {
+            const typing = document.getElementById('typing');
+            const botResponse = document.getElementById('bot-response');
+            
+            // Hide typing indicator
+            typing.style.display = 'none';
+            
+            // Show bot response
+            botResponse.classList.remove('hide');
+            
+            // Auto scroll to bottom
+            const container = document.getElementById('messages-container');
+            container.scrollTop = container.scrollHeight;
+        }, 3000);
+    </script>
+</body>
+</html>
